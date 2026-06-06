@@ -45,4 +45,11 @@ const List<LoginAccount> kAllAccounts = <LoginAccount>[
     avatar: 'assets/images/avatars/avatar_5.png',
     wxid: 'wxid_finance_zhang',
   ),
+  LoginAccount(
+    phone: '17700000000',
+    password: '111111',
+    nickname: '测试用户',
+    avatar: 'assets/images/avatars/avatar_1.png',
+    wxid: 'wxid_test_177',
+  ),
 ];
