@@ -70,7 +70,21 @@ flutter:
     - lib/data/mock/
     - lib/data/mock/messages/
 
-  # fonts:
   #   - family: PingFang SC
   #     fonts:
   #       - asset: assets/fonts/PingFangSC-Regular.ttf
+
+  fonts:
+    - family: WeChatSansStd
+      fonts:
+        - asset: assets/fonts/WeChatSansStd-Light.ttf
+          weight: 300
+        - asset: assets/fonts/WeChatSansStd-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/WeChatSansStd-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/WeChatSansStd-Bold.ttf
+          weight: 700
+    - family: WeChatNum
+      fonts:
+        - asset: assets/fonts/WeChatNum.ttf

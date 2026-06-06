@@ -142,6 +142,7 @@ class WxRouter {
 class WxTheme {
   static ThemeData get light {
     return ThemeData(
+      fontFamily: 'WeChatSansStd',
       useMaterial3: true,
       brightness: Brightness.light,
       primaryColor: WxColors.green,

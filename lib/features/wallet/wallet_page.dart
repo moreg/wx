@@ -198,7 +198,8 @@ class _WalletListItem extends StatelessWidget {
                 Text(
                   trailingText!,
                   style: const TextStyle(
-                    fontSize: 15,
+                    fontFamily: 'WeChatNum',
+                    fontSize: 16,
                     color: WxColors.textSecondary,
                   ),
                 ),
