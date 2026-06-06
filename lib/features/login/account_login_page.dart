@@ -3,51 +3,60 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/services/auth_state.dart';
+import '../../data/models/login_account.dart';
 import '../../data/repositories/auth_repo.dart';
 import 'widgets/dark_login_layout.dart';
 
-class PhoneLoginPage extends StatefulWidget {
-  const PhoneLoginPage({super.key});
+class AccountLoginPage extends StatefulWidget {
+  const AccountLoginPage({super.key});
 
   @override
-  State<PhoneLoginPage> createState() => _PhoneLoginPageState();
+  State<AccountLoginPage> createState() => _AccountLoginPageState();
 }
 
-class _PhoneLoginPageState extends State<PhoneLoginPage> {
+class _AccountLoginPageState extends State<AccountLoginPage> {
   static const AuthRepository _repo = AuthRepository();
 
-  late final TextEditingController _phoneCtrl;
+  late final TextEditingController _accountCtrl;
+  late final TextEditingController _passwordCtrl;
   bool _loggingIn = false;
 
-  bool get _canContinue => _phoneCtrl.text.trim().length == 11 && !_loggingIn;
+  bool get _canLogin =>
+      _accountCtrl.text.trim().isNotEmpty &&
+      _passwordCtrl.text.isNotEmpty &&
+      !_loggingIn;
 
   @override
   void initState() {
     super.initState();
-    _phoneCtrl = TextEditingController()..addListener(_onPhoneChanged);
+    _accountCtrl = TextEditingController()..addListener(_onInputChanged);
+    _passwordCtrl = TextEditingController()..addListener(_onInputChanged);
   }
 
   @override
   void dispose() {
-    _phoneCtrl
-      ..removeListener(_onPhoneChanged)
+    _accountCtrl
+      ..removeListener(_onInputChanged)
+      ..dispose();
+    _passwordCtrl
+      ..removeListener(_onInputChanged)
       ..dispose();
     super.dispose();
   }
 
-  void _onPhoneChanged() {
+  void _onInputChanged() {
     setState(() {});
   }
 
-  Future<void> _onContinue() async {
-    if (!_canContinue) {
+  Future<void> _onLogin() async {
+    if (!_canLogin) {
       return;
     }
     FocusScope.of(context).unfocus();
 
-    final account = _repo.findByPhone(_phoneCtrl.text.trim());
-    if (account == null) {
-      _toast('未找到该手机号对应的测试账号');
+    final account = _findAccount(_accountCtrl.text.trim());
+    if (account == null || account.password != _passwordCtrl.text) {
+      _toast('账号或密码错误');
       return;
     }
 
@@ -65,6 +74,15 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
       return;
     }
     context.go('/home');
+  }
+
+  LoginAccount? _findAccount(String input) {
+    for (final account in _repo.allAccounts) {
+      if (account.wxid == input || account.phone == input) {
+        return account;
+      }
+    }
+    return null;
   }
 
   void _toast(String msg) {
@@ -91,34 +109,35 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       child: DarkLoginLayout(
-        title: '手机号登录',
-        buttonEnabled: _canContinue,
+        title: '微信号/QQ号/邮箱登录',
+        buttonEnabled: _canLogin,
         loading: _loggingIn,
-        buttonLabel: '同意并继续',
-        onButtonPressed: _onContinue,
+        buttonLabel: '同意并登录',
+        onButtonPressed: _onLogin,
         onTabletLogin: () => _toast('平板登录暂未开放'),
         formChildren: [
-          const DarkLoginRow.display(label: '国家/地区', value: '中国大陆（+86）'),
+          DarkLoginRow.input(
+            label: '账号',
+            hint: '请填写微信号/QQ号/邮箱',
+            controller: _accountCtrl,
+            autofocus: true,
+            textInputAction: TextInputAction.next,
+          ),
           const DarkLoginHairline(),
           DarkLoginRow.input(
-            label: '手机号',
-            hint: '请填写手机号码',
-            controller: _phoneCtrl,
-            autofocus: true,
-            keyboardType: TextInputType.phone,
+            label: '密码',
+            hint: '请填写密码',
+            controller: _passwordCtrl,
+            obscureText: true,
             textInputAction: TextInputAction.done,
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              LengthLimitingTextInputFormatter(11),
-            ],
-            onSubmitted: (_) => _onContinue(),
+            onSubmitted: (_) => _onLogin(),
           ),
           const DarkLoginHairline(),
           const SizedBox(height: 26),
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              '上述手机号仅用于登录验证',
+              '上述微信号/QQ号/邮箱仅用于登录验证',
               style: TextStyle(
                 color: DarkLoginColors.secondaryText,
                 fontSize: 15,
@@ -130,8 +149,8 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
           Align(
             alignment: Alignment.centerLeft,
             child: DarkLoginTextLink(
-              label: '用微信号/QQ号/邮箱登录',
-              onTap: () => context.push('/login/account'),
+              label: '用手机号登录',
+              onTap: () => context.go('/login/phone'),
               fontSize: 16,
             ),
           ),

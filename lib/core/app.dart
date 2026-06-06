@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/splash/splash_page.dart';
+import '../features/login/account_login_page.dart';
 import '../features/login/login_page.dart';
 import '../features/login/phone_login_page.dart';
 import '../features/home/home_page.dart';
@@ -40,6 +41,10 @@ class WxRouter {
           GoRoute(
             path: 'phone',
             builder: (context, state) => const PhoneLoginPage(),
+          ),
+          GoRoute(
+            path: 'account',
+            builder: (context, state) => const AccountLoginPage(),
           ),
         ],
       ),
