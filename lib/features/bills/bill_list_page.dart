@@ -332,7 +332,7 @@ class _BillListPageState extends ConsumerState<BillListPage> {
       );
   }
 
-  static String _two(int n) => n.toString().padLeft(2, '0');
+  String _two(int n) => n.toString().padLeft(2, '0');
 }
 
 class _FilterPill extends StatelessWidget {
@@ -543,12 +543,12 @@ class _BillTile extends StatelessWidget {
     return '${_two(t.month)}-${_two(t.day)} ${_two(t.hour)}:${_two(t.minute)}';
   }
 
-  static String _two(int n) => n.toString().padLeft(2, '0');
+  String _two(int n) => n.toString().padLeft(2, '0');
 }
 
 class _CategoryIcon extends StatelessWidget {
   final String category;
-  const _CategoryIcon({required this.category});
+  const _CategoryIcon({super.key, required this.category});
 
   static const Map<String, IconData> _iconMap = {
     '餐饮美食': Icons.restaurant_rounded,
@@ -610,7 +610,7 @@ class _BillDivider extends StatelessWidget {
 
 class _BillActionSheet extends StatelessWidget {
   final Bill bill;
-  const _BillActionSheet({required this.bill});
+  const _BillActionSheet({super.key, required this.bill});
 
   @override
   Widget build(BuildContext context) {
@@ -686,6 +686,7 @@ class _SheetItem extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
   const _SheetItem({
+    super.key,
     required this.icon,
     required this.label,
     required this.color,
@@ -725,6 +726,7 @@ class _EmptyState extends StatelessWidget {
   final String title;
   final String subtitle;
   const _EmptyState({
+    super.key,
     required this.icon,
     required this.title,
     required this.subtitle,
