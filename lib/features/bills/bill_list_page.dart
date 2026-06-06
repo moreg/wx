@@ -44,30 +44,6 @@ class BillListPage extends ConsumerStatefulWidget {
 }
 
 class _BillListPageState extends ConsumerState<BillListPage> {
-  final TextEditingController _searchCtrl = TextEditingController();
-  bool _searchActive = false;
-
-  @override
-  void dispose() {
-    _searchCtrl.dispose();
-    super.dispose();
-  }
-
-  void _onSearchChanged(String v) {
-    ref.read(billSearchQueryProvider.notifier).state = v;
-  }
-
-  void _clearSearch() {
-    _searchCtrl.clear();
-    ref.read(billSearchQueryProvider.notifier).state = '';
-    setState(() => _searchActive = false);
-    FocusScope.of(context).unfocus();
-  }
-
-  void _onTapSearch() {
-    setState(() => _searchActive = true);
-  }
-
   Future<void> _onRefresh() async {
     HapticFeedback.lightImpact();
     await Future.delayed(const Duration(milliseconds: 600));
@@ -83,29 +59,22 @@ class _BillListPageState extends ConsumerState<BillListPage> {
     // 搜索模式：实时过滤 + 平铺（不分组）；否则按月分组
     final List<_ListEntry> entries = _buildEntries(bills, filter, query);
 
-    // 顶部"本月"汇总：始终用本月范围（不随筛选/搜索变化）
-    final now = DateTime.now();
-    final monthStart = DateTime(now.year, now.month, 1);
-    final monthEnd = DateTime(now.year, now.month + 1, 1)
-        .subtract(const Duration(seconds: 1));
-    final monthlySummary = repo.getSummary(start: monthStart, end: monthEnd);
-
     return Scaffold(
-      backgroundColor: WxColors.bg,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('账单'),
-        centerTitle: false,
+        backgroundColor: const Color(0xFFEDEDED),
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.close, color: WxColors.textPrimary, size: 24),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text('账单', style: TextStyle(color: WxColors.textPrimary, fontSize: 17, fontWeight: FontWeight.w500)),
+        centerTitle: true,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_list_rounded),
-            tooltip: '筛选',
-            onPressed: () async {
-              await context.push('/bills/filter');
-            },
-          ),
           PopupMenuButton<_MenuAction>(
             tooltip: '更多',
-            icon: const Icon(Icons.more_horiz_rounded),
+            icon: const Icon(Icons.more_horiz, color: WxColors.textPrimary),
             onSelected: (a) => _onMenuAction(a, entries),
             itemBuilder: (ctx) => const [
               PopupMenuItem(
@@ -130,27 +99,39 @@ class _BillListPageState extends ConsumerState<BillListPage> {
       ),
       body: Column(
         children: [
-          // 搜索栏
-          _SearchBar(
-            controller: _searchCtrl,
-            active: _searchActive,
-            onChanged: _onSearchChanged,
-            onTap: _onTapSearch,
-            onClear: _clearSearch,
-          ),
-
-          // 顶部汇总条（仅在非搜索时显示）
-          if (query.trim().isEmpty) _SummaryBar(summary: monthlySummary),
-
-          // 筛选条件 chip 行（仅在非默认筛选时显示）
-          if (!_filterIsDefault(filter))
-            _FilterChips(
-              filter: filter,
-              onClear: () =>
-                  ref.read(billFilterProvider.notifier).state = const BillFilter(),
+          Container(
+            color: const Color(0xFFEDEDED),
+            padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+            child: Row(
+              children: [
+                _FilterPill(
+                  label: '全部账单',
+                  hasArrow: true,
+                  onTap: () async {
+                    await context.push('/bills/filter');
+                  },
+                ),
+                const SizedBox(width: 8),
+                _FilterPill(
+                  icon: Icons.search,
+                  label: '查找交易',
+                  onTap: () {
+                    // TODO search
+                  },
+                ),
+                const Spacer(),
+                GestureDetector(
+                  onTap: () => context.push('/bills/stats'),
+                  child: const Row(
+                    children: [
+                      Text('收支统计', style: TextStyle(color: WxColors.textSecondary, fontSize: 13)),
+                      Icon(Icons.chevron_right, color: WxColors.textSecondary, size: 16),
+                    ],
+                  ),
+                ),
+              ],
             ),
-
-          // 主体列表
+          ),
           Expanded(
             child: RefreshIndicator(
               onRefresh: _onRefresh,
@@ -165,7 +146,7 @@ class _BillListPageState extends ConsumerState<BillListPage> {
                         for (final e in entries) ...[
                           if (e is _MonthHeaderEntry)
                             SliverPersistentHeader(
-                              pinned: false,
+                              pinned: true,
                               delegate: _MonthHeaderDelegate(
                                 title: e.title,
                                 expense: e.expense,
@@ -357,268 +338,46 @@ class _BillListPageState extends ConsumerState<BillListPage> {
   static String _two(int n) => n.toString().padLeft(2, '0');
 }
 
-// =====================================================================
-// 搜索栏
-// =====================================================================
-
-class _SearchBar extends StatelessWidget {
-  final TextEditingController controller;
-  final bool active;
-  final ValueChanged<String> onChanged;
-  final VoidCallback onTap;
-  final VoidCallback onClear;
-
-  const _SearchBar({
-    required this.controller,
-    required this.active,
-    required this.onChanged,
-    required this.onTap,
-    required this.onClear,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        WxSpace.lg, WxSpace.sm, WxSpace.lg, WxSpace.sm,
-      ),
-      child: Container(
-        height: 36,
-        decoration: BoxDecoration(
-          color: WxColors.bgLight,
-          borderRadius: BorderRadius.circular(WxRadius.lg),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: WxSpace.md),
-        child: Row(
-          children: [
-            const Icon(Icons.search_rounded,
-                color: WxColors.textHint, size: 18),
-            const SizedBox(width: WxSpace.sm),
-            Expanded(
-              child: TextField(
-                controller: controller,
-                onChanged: onChanged,
-                onTap: onTap,
-                style: const TextStyle(
-                  fontSize: WxFontSize.body,
-                  color: WxColors.textPrimary,
-                ),
-                decoration: const InputDecoration(
-                  isCollapsed: true,
-                  border: InputBorder.none,
-                  hintText: '搜索账单（商家 / 金额 / 备注）',
-                  hintStyle: TextStyle(
-                    color: WxColors.textHint,
-                    fontSize: WxFontSize.body,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 10),
-                ),
-              ),
-            ),
-            if (active || controller.text.isNotEmpty)
-              GestureDetector(
-                onTap: onClear,
-                behavior: HitTestBehavior.opaque,
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: WxSpace.xs),
-                  child: Icon(Icons.cancel_rounded,
-                      color: WxColors.textHint, size: 18),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// =====================================================================
-// 顶部汇总条
-// =====================================================================
-
-class _SummaryBar extends StatelessWidget {
-  final BillSummary summary;
-  const _SummaryBar({required this.summary});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(
-        WxSpace.lg, 0, WxSpace.lg, WxSpace.sm,
-      ),
-      padding: const EdgeInsets.symmetric(
-        vertical: WxSpace.md, horizontal: WxSpace.lg,
-      ),
-      decoration: BoxDecoration(
-        color: WxColors.card,
-        borderRadius: BorderRadius.circular(WxRadius.lg),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _SummaryCell(
-              label: '本月支出',
-              value: summary.totalExpense,
-              color: WxColors.expense,
-            ),
-          ),
-          const _SummaryDivider(),
-          Expanded(
-            child: _SummaryCell(
-              label: '本月收入',
-              value: summary.totalIncome,
-              color: WxColors.income,
-            ),
-          ),
-          const _SummaryDivider(),
-          Expanded(
-            child: _SummaryCell(
-              label: '净支出',
-              value: (summary.totalExpense - summary.totalIncome).abs(),
-              color: WxColors.textPrimary,
-              prefix: (summary.totalExpense - summary.totalIncome) >= 0
-                  ? '-'
-                  : '+',
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _SummaryCell extends StatelessWidget {
+class _FilterPill extends StatelessWidget {
+  final IconData? icon;
   final String label;
-  final double value;
-  final Color color;
-  final String? prefix;
-  const _SummaryCell({
+  final bool hasArrow;
+  final VoidCallback onTap;
+
+  const _FilterPill({
+    this.icon,
     required this.label,
-    required this.value,
-    required this.color,
-    this.prefix,
+    this.hasArrow = false,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: WxFontSize.small,
-            color: WxColors.textSecondary,
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 32,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          color: const Color(0xFFE2E2E2),
+          borderRadius: BorderRadius.circular(16),
         ),
-        const SizedBox(height: 2),
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            '${prefix ?? ''}¥${value.toStringAsFixed(2)}',
-            style: TextStyle(
-              fontSize: WxFontSize.titleLarge,
-              color: color,
-              fontWeight: WxFontWeight.semibold,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) ...[
+              Icon(icon, size: 16, color: WxColors.textPrimary),
+              const SizedBox(width: 4),
+            ],
+            Text(
+              label,
+              style: const TextStyle(fontSize: 14, color: WxColors.textPrimary, fontWeight: FontWeight.w400),
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _SummaryDivider extends StatelessWidget {
-  const _SummaryDivider();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 0.5,
-      height: 28,
-      color: WxColors.divider,
-    );
-  }
-}
-
-// =====================================================================
-// 筛选条件 chip 行
-// =====================================================================
-
-class _FilterChips extends ConsumerWidget {
-  final BillFilter filter;
-  final VoidCallback onClear;
-  const _FilterChips({required this.filter, required this.onClear});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final chips = <Widget>[];
-
-    if (filter.direction != null) {
-      chips.add(_chip(filter.direction!.label));
-    }
-    if (filter.type != null && filter.type!.isNotEmpty) {
-      chips.add(_chip(filter.type!));
-    }
-    if (filter.startDate != null || filter.endDate != null) {
-      final s = filter.startDate;
-      final e = filter.endDate;
-      final sStr = s == null ? '不限' : DateFormat('MM/dd').format(s);
-      final eStr = e == null ? '不限' : DateFormat('MM/dd').format(e);
-      chips.add(_chip('$sStr ~ $eStr'));
-    }
-    if (filter.minAmount != null || filter.maxAmount != null) {
-      final lo = filter.minAmount?.toStringAsFixed(0) ?? '0';
-      final hi = filter.maxAmount?.toStringAsFixed(0) ?? '∞';
-      chips.add(_chip('¥$lo ~ ¥$hi'));
-    }
-
-    return Container(
-      padding: const EdgeInsets.fromLTRB(
-        WxSpace.lg, 0, WxSpace.lg, WxSpace.sm,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  for (final c in chips) ...[c, const SizedBox(width: WxSpace.sm)],
-                ],
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: onClear,
-            style: TextButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: WxSpace.sm),
-              minimumSize: const Size(0, 28),
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            ),
-            child: const Text('清除筛选',
-                style: TextStyle(
-                  fontSize: WxFontSize.small,
-                  color: WxColors.linkBlue,
-                )),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _chip(String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: WxSpace.sm, vertical: 3),
-      decoration: BoxDecoration(
-        color: WxColors.green.withValues(alpha: 0.10),
-        borderRadius: BorderRadius.circular(WxRadius.sm),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: WxFontSize.small,
-          color: WxColors.green,
+            if (hasArrow) ...[
+              const SizedBox(width: 2),
+              const Icon(Icons.arrow_drop_down, size: 18, color: WxColors.textPrimary),
+            ],
+          ],
         ),
       ),
     );
@@ -644,35 +403,37 @@ class _MonthHeaderDelegate extends SliverPersistentHeaderDelegate {
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: _height,
-      color: WxColors.bg,
-      padding: const EdgeInsets.symmetric(horizontal: WxSpace.lg),
+      color: const Color(0xFFF5F5F5),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           Text(
             title,
             style: const TextStyle(
-              fontSize: WxFontSize.body,
-              color: WxColors.textSecondary,
-              fontWeight: WxFontWeight.medium,
+              fontSize: 14,
+              color: WxColors.textPrimary,
+              fontWeight: FontWeight.w500,
             ),
           ),
+          const SizedBox(width: 4),
+          const Icon(Icons.keyboard_arrow_down, size: 16, color: WxColors.textPrimary),
           const Spacer(),
           if (expense > 0)
             Text(
-              '支出 ¥${expense.toStringAsFixed(2)}',
+              '支出¥${expense.toStringAsFixed(2)}',
               style: const TextStyle(
-                fontSize: WxFontSize.small,
-                color: WxColors.expense,
+                fontSize: 12,
+                color: WxColors.textSecondary,
               ),
             ),
           if (income > 0 && expense > 0)
-            const SizedBox(width: WxSpace.sm),
+            const SizedBox(width: 8),
           if (income > 0)
             Text(
-              '收入 ¥${income.toStringAsFixed(2)}',
+              '收入¥${income.toStringAsFixed(2)}',
               style: const TextStyle(
-                fontSize: WxFontSize.small,
-                color: WxColors.income,
+                fontSize: 12,
+                color: WxColors.textSecondary,
               ),
             ),
         ],
@@ -707,24 +468,23 @@ class _BillTile extends StatelessWidget {
     final isIncome = bill.direction == BillDirection.income;
     final isNeutral = bill.direction == BillDirection.neutral;
     final amountColor = isIncome
-        ? WxColors.income
-        : (isNeutral ? WxColors.textPrimary : WxColors.expense);
+        ? const Color(0xFFFA9D3B)
+        : const Color(0xFF181818);
     final amountPrefix = isIncome ? '+' : (isNeutral ? '' : '-');
 
     return InkWell(
       onTap: onTap,
       onLongPress: onLongPress,
       child: Container(
-        color: WxColors.card,
+        color: Colors.white,
         padding: const EdgeInsets.symmetric(
-          horizontal: WxSpace.lg,
-          vertical: WxSpace.md,
+          horizontal: 16,
+          vertical: 14,
         ),
         child: Row(
           children: [
-            // 左侧图标方块（按 category 简单配色）
             _CategoryIcon(category: bill.category),
-            const SizedBox(width: WxSpace.md),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -735,45 +495,32 @@ class _BillTile extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: WxFontSize.bodyLarge,
+                      fontSize: 16,
                       color: WxColors.textPrimary,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 4),
                   Text(
-                    _subtitle(bill),
+                    _formatTime(bill.transTime),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                      fontSize: WxFontSize.small,
+                      fontSize: 13,
                       color: WxColors.textSecondary,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(width: WxSpace.sm),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  '$amountPrefix¥${bill.amount.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontSize: WxFontSize.bodyLarge,
-                    color: amountColor,
-                    fontWeight: WxFontWeight.medium,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  _formatTime(bill.transTime),
-                  style: const TextStyle(
-                    fontSize: WxFontSize.small,
-                    color: WxColors.textTertiary,
-                  ),
-                ),
-              ],
+            const SizedBox(width: 8),
+            Text(
+              '$amountPrefix${bill.amount.toStringAsFixed(2)}',
+              style: TextStyle(
+                fontFamily: 'WeChatNum',
+                fontSize: 17,
+                color: amountColor,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ],
         ),
@@ -836,10 +583,10 @@ class _CategoryIcon extends StatelessWidget {
       width: 40,
       height: 40,
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(WxRadius.md),
+        color: color,
+        shape: BoxShape.circle,
       ),
-      child: Icon(icon, color: color, size: 22),
+      child: Icon(icon, color: Colors.white, size: 24),
     );
   }
 }
@@ -849,8 +596,8 @@ class _BillDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: WxColors.card,
-      padding: const EdgeInsets.only(left: WxSpace.lg + 40 + WxSpace.md),
+      color: Colors.white,
+      padding: const EdgeInsets.only(left: 16 + 40 + 12),
       child: const Divider(
         height: 0.5,
         thickness: 0.5,
