@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/design_tokens.dart';
@@ -102,15 +103,20 @@ class _TopGreenCard extends StatelessWidget {
                 onTap: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('收付款 TODO'))),
                 borderRadius: const BorderRadius.horizontal(left: Radius.circular(12)),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 36),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(Icons.qr_code_scanner, color: Colors.white, size: 36),
-                      SizedBox(height: 12),
-                      Text(
+                    children: <Widget>[
+                      SvgPicture.asset(
+                        'assets/icons/scan-outlined.svg',
+                        width: 32,
+                        height: 32,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
                         '收付款',
-                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -119,7 +125,7 @@ class _TopGreenCard extends StatelessWidget {
             ),
             Container(
               width: 0.5,
-              margin: const EdgeInsets.symmetric(vertical: 24),
+              margin: const EdgeInsets.symmetric(vertical: 20),
               color: Colors.white.withOpacity(0.3),
             ),
             Expanded(
@@ -127,18 +133,23 @@ class _TopGreenCard extends StatelessWidget {
                 onTap: () => context.push('/wallet'),
                 borderRadius: const BorderRadius.horizontal(right: Radius.circular(12)),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 36),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Icon(Icons.account_balance_wallet_outlined, color: Colors.white, size: 36),
-                      SizedBox(height: 12),
-                      Text(
-                        '钱包',
-                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
+                    children: <Widget>[
+                      SvgPicture.asset(
+                        'assets/icons/wallet-outlined.svg',
+                        width: 32,
+                        height: 32,
+                        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                       ),
-                      SizedBox(height: 2),
-                      Text(
+                      const SizedBox(height: 8),
+                      const Text(
+                        '钱包',
+                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 2),
+                      const Text(
                         '¥0.74',
                         style: TextStyle(color: Colors.white70, fontSize: 12),
                       ),
