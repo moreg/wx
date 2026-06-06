@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/design_tokens.dart';
@@ -36,14 +37,14 @@ class WalletPage extends StatelessWidget {
                 _WalletListGroup(
                   children: [
                     _WalletListItem(
-                      icon: Icons.monetization_on_outlined,
+                      svgAsset: 'assets/icons/coin-outlined.svg',
                       iconColor: Color(0xFFFFC300),
                       label: '零钱',
                       trailingText: '¥0.74',
                     ),
                     _WalletListDivider(),
                     _WalletListItem(
-                      icon: Icons.diamond_outlined, // Use diamond_outlined if exists, otherwise fallback
+                      svgAsset: 'assets/icons/pay-mini-fund-outlined.svg',
                       iconColor: Color(0xFFFFC300),
                       label: '零钱通',
                       subtitle: '收益率 0.93%',
@@ -51,13 +52,13 @@ class WalletPage extends StatelessWidget {
                     ),
                     _WalletListDivider(),
                     _WalletListItem(
-                      icon: Icons.credit_card,
+                      svgAsset: 'assets/icons/pay-cards-outlined.svg',
                       iconColor: Color(0xFF10AEFF),
                       label: '银行卡',
                     ),
                     _WalletListDivider(),
                     _WalletListItem(
-                      icon: Icons.all_inclusive,
+                      svgAsset: 'assets/icons/pay-relative-cards.svg',
                       iconColor: Color(0xFFFA9D3B),
                       label: '亲属卡',
                     ),
@@ -139,19 +140,21 @@ class _WalletListGroup extends StatelessWidget {
 }
 
 class _WalletListItem extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final String? svgAsset;
   final Color iconColor;
   final String label;
   final String? subtitle;
   final String? trailingText;
 
   const _WalletListItem({
-    required this.icon,
+    this.icon,
+    this.svgAsset,
     required this.iconColor,
     required this.label,
     this.subtitle,
     this.trailingText,
-  });
+  }) : assert(icon != null || svgAsset != null);
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +166,15 @@ class _WalletListItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             children: <Widget>[
-              Icon(icon, color: iconColor, size: 24),
+              if (svgAsset != null)
+                SvgPicture.asset(
+                  svgAsset!,
+                  width: 24,
+                  height: 24,
+                  colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+                )
+              else if (icon != null)
+                Icon(icon, color: iconColor, size: 24),
               const SizedBox(width: 16),
               Text(
                 label,
