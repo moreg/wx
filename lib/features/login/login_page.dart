@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage>
                             label: '登录',
                             backgroundColor: WxColors.green,
                             foregroundColor: Colors.white,
-                            onPressed: () => context.push('/login/phone'),
+                            onPressed: () => context.push('/login/account'),
                           ),
                           _BigButton(
                             width: buttonWidth,

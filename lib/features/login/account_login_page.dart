@@ -133,25 +133,25 @@ class _AccountLoginPageState extends State<AccountLoginPage> {
             onSubmitted: (_) => _onLogin(),
           ),
           const DarkLoginHairline(),
-          const SizedBox(height: 26),
+          const SizedBox(height: 14),
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
               '上述微信号/QQ号/邮箱仅用于登录验证',
               style: TextStyle(
                 color: DarkLoginColors.secondaryText,
-                fontSize: 15,
+                fontSize: 12,
                 height: 1,
               ),
             ),
           ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 16),
           Align(
             alignment: Alignment.centerLeft,
             child: DarkLoginTextLink(
               label: '用手机号登录',
               onTap: () => context.go('/login/phone'),
-              fontSize: 16,
+              fontSize: 15,
             ),
           ),
         ],

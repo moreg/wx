@@ -50,12 +50,12 @@ class DarkLoginLayout extends StatelessWidget {
             return Stack(
               children: [
                 Positioned(
-                  top: 18,
-                  left: sidePadding - 8,
+                  top: 4,
+                  left: sidePadding - 14,
                   child: IconButton(
-                    icon: const Icon(Icons.close, size: 28),
+                    icon: const Icon(Icons.close, size: 22),
                     color: Colors.white,
-                    splashRadius: 28,
+                    splashRadius: 24,
                     onPressed: () => context.pop(),
                   ),
                 ),
@@ -68,7 +68,7 @@ class DarkLoginLayout extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: DarkLoginColors.primaryText,
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.w400,
                       height: 1,
                       letterSpacing: 0,
@@ -88,7 +88,7 @@ class DarkLoginLayout extends StatelessWidget {
                   child: Center(
                     child: SizedBox(
                       width: width * 0.46,
-                      height: 52,
+                      height: 46,
                       child: FilledButton(
                         style: FilledButton.styleFrom(
                           backgroundColor: const Color(0xFF242424),
@@ -97,7 +97,7 @@ class DarkLoginLayout extends StatelessWidget {
                           disabledForegroundColor: const Color(0xFF5E5E5E),
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: buttonEnabled ? onButtonPressed : null,
@@ -113,7 +113,7 @@ class DarkLoginLayout extends StatelessWidget {
                             : Text(
                                 buttonLabel,
                                 style: const TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: 0,
                                 ),
@@ -129,7 +129,7 @@ class DarkLoginLayout extends StatelessWidget {
                   child: Center(
                     child: DarkLoginTextLink(
                       label: '作为平板登录',
-                      fontSize: 18,
+                      fontSize: 15,
                       onTap: onTabletLogin,
                     ),
                   ),
@@ -190,16 +190,16 @@ class DarkLoginRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 68,
+      height: 50,
       child: Row(
         children: [
           SizedBox(
-            width: 106,
+            width: 85,
             child: Text(
               label,
               style: const TextStyle(
                 color: DarkLoginColors.primaryText,
-                fontSize: 18,
+                fontSize: 15,
                 height: 1,
               ),
             ),
@@ -210,7 +210,7 @@ class DarkLoginRow extends StatelessWidget {
                     value!,
                     style: const TextStyle(
                       color: DarkLoginColors.primaryText,
-                      fontSize: 18,
+                      fontSize: 15,
                       height: 1,
                     ),
                   )
@@ -226,7 +226,7 @@ class DarkLoginRow extends StatelessWidget {
                     onSubmitted: onSubmitted,
                     style: const TextStyle(
                       color: DarkLoginColors.primaryText,
-                      fontSize: 18,
+                      fontSize: 15,
                       height: 1,
                     ),
                     decoration: InputDecoration(
@@ -235,7 +235,7 @@ class DarkLoginRow extends StatelessWidget {
                       hintText: hint,
                       hintStyle: const TextStyle(
                         color: Color(0xFF5A5A5A),
-                        fontSize: 18,
+                        fontSize: 15,
                         height: 1,
                       ),
                     ),
@@ -305,7 +305,7 @@ class DarkLoginBottomLinks extends StatelessWidget {
           '找回密码',
           style: TextStyle(
             color: DarkLoginColors.linkText,
-            fontSize: 14,
+            fontSize: 12,
             height: 1,
           ),
         ),
@@ -314,7 +314,7 @@ class DarkLoginBottomLinks extends StatelessWidget {
           '导出聊天记录',
           style: TextStyle(
             color: DarkLoginColors.linkText,
-            fontSize: 14,
+            fontSize: 12,
             height: 1,
           ),
         ),
@@ -323,7 +323,7 @@ class DarkLoginBottomLinks extends StatelessWidget {
           '更多',
           style: TextStyle(
             color: DarkLoginColors.linkText,
-            fontSize: 14,
+            fontSize: 12,
             height: 1,
           ),
         ),
@@ -339,7 +339,7 @@ class _VerticalDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 1,
-      height: 20,
+      height: 16,
       margin: const EdgeInsets.symmetric(horizontal: 18),
       color: DarkLoginColors.divider,
     );
