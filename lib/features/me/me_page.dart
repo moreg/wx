@@ -42,7 +42,7 @@ class _MePageState extends State<MePage> {
           _ProfileHeader(accountFuture: _accountFuture),
           const SizedBox(height: 8),
           _ListItem(
-            icon: 'assets/icons/wechat.svg',
+            icon: 'assets/icons/wechat-filled.svg',
             iconColor: WxColors.green,
             label: '服务',
             showArrow: true,
@@ -78,8 +78,8 @@ class _MePageState extends State<MePage> {
           ),
           const _ListDivider(),
           const _ListItem(
-            icon: 'assets/icons/album-outlined.svg',
-            iconColor: WxColors.linkBlue,
+            icon: 'assets/icons/moment.svg',
+            iconColor: null, // intrinsic colorful icon
             label: '朋友圈',
             showArrow: true,
           ),
@@ -142,8 +142,8 @@ class _ProfileHeader extends StatelessWidget {
                     ? const _AvatarFallback(size: 72, letter: '微')
                     : Image.asset(
                         account.avatar,
-                        width: 72,
-                        height: 72,
+                        width: 64,
+                        height: 64,
                         fit: BoxFit.cover,
                         errorBuilder: (_, _, _) => _AvatarFallback(
                           size: 72,
@@ -162,13 +162,13 @@ class _ProfileHeader extends StatelessWidget {
                     Text(
                       account?.nickname ?? '微信用户',
                       style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
                         color: WxColors.textPrimary,
                         letterSpacing: 0.5,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 8),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
@@ -176,7 +176,7 @@ class _ProfileHeader extends StatelessWidget {
                           child: Text(
                             '微信号：${account?.wxid ?? '-'}',
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 15,
                               color: WxColors.textSecondary,
                             ),
                             maxLines: 1,
@@ -294,18 +294,18 @@ class _ListItem extends StatelessWidget {
               children: <Widget>[
                 SvgPicture.asset(
                   icon,
-                  width: 24,
-                  height: 24,
+                  width: 28,
+                  height: 28,
                   colorFilter: iconColor != null
                       ? ColorFilter.mode(iconColor!, BlendMode.srcIn)
                       : null,
                 ),
-                const SizedBox(width: 20),
+                const SizedBox(width: 16),
                 Expanded(
                   child: Text(
                     label,
                     style: const TextStyle(
-                      fontSize: 17,
+                      fontSize: 16,
                       color: WxColors.textPrimary,
                     ),
                   ),

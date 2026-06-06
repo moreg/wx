@@ -169,17 +169,17 @@ class _WalletListItem extends StatelessWidget {
               if (svgAsset != null)
                 SvgPicture.asset(
                   svgAsset!,
-                  width: 24,
-                  height: 24,
+                  width: 28,
+                  height: 28,
                   colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
                 )
               else if (icon != null)
-                Icon(icon, color: iconColor, size: 24),
+                Icon(icon, color: iconColor, size: 28),
               const SizedBox(width: 16),
               Text(
                 label,
                 style: const TextStyle(
-                  fontSize: 17,
+                  fontSize: 16,
                   color: WxColors.textPrimary,
                 ),
               ),
