@@ -204,7 +204,7 @@ class _BillListPageState extends ConsumerState<BillListPage> {
         _BillEntry(bills: g.bills),
       ],
     ];
-
+  }
 
   Widget _buildEmpty() {
     return ListView(
@@ -548,7 +548,7 @@ class _BillTile extends StatelessWidget {
 
 class _CategoryIcon extends StatelessWidget {
   final String category;
-  const _CategoryIcon({super.key, required this.category});
+  const _CategoryIcon({required this.category});
 
   static const Map<String, IconData> _iconMap = {
     '餐饮美食': Icons.restaurant_rounded,
@@ -610,7 +610,7 @@ class _BillDivider extends StatelessWidget {
 
 class _BillActionSheet extends StatelessWidget {
   final Bill bill;
-  const _BillActionSheet({super.key, required this.bill});
+  const _BillActionSheet({required this.bill});
 
   @override
   Widget build(BuildContext context) {
@@ -686,7 +686,6 @@ class _SheetItem extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
   const _SheetItem({
-    super.key,
     required this.icon,
     required this.label,
     required this.color,
@@ -726,7 +725,6 @@ class _EmptyState extends StatelessWidget {
   final String title;
   final String subtitle;
   const _EmptyState({
-    super.key,
     required this.icon,
     required this.title,
     required this.subtitle,

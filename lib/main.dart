@@ -16,10 +16,8 @@ void main() {
   );
 
   // 预加载常用 SVG 资产，避免首次切换卡顿
-  precachePicture(
-    ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, 'assets/icons/wechat.svg'),
-    null,
-  );
+  const loader = SvgAssetLoader('assets/icons/wechat.svg');
+  svg.cache.putIfAbsent(loader.cacheKey(null), () => loader.loadBytes(null));
 
   runApp(const WxApp());
 }
