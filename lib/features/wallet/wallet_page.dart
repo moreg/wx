@@ -21,7 +21,7 @@ class WalletPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 16),
             child: Center(
               child: InkWell(
-                onTap: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('账单 TODO'))),
+                onTap: () => context.push('/bills'),
                 child: const Text('账单', style: TextStyle(fontSize: 16, color: WxColors.textPrimary)),
               ),
             ),
