@@ -11,6 +11,7 @@
 // 点击图片进入全屏预览（用 ImagePreviewPage）
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/design_tokens.dart';
