@@ -13,6 +13,7 @@ import '../chats/chat_list_page.dart';
 import '../contacts/contacts_page.dart';
 import '../discover/discover_page.dart';
 import '../me/me_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,23 +28,23 @@ class _HomePageState extends State<HomePage> {
   static const List<_TabSpec> _tabs = <_TabSpec>[
     _TabSpec(
       label: '微信',
-      icon: Icons.chat_bubble_outline,
-      activeIcon: Icons.chat_bubble,
+      icon: 'assets/icons/wechat-outlined.svg',
+      activeIcon: 'assets/icons/wechat-filled.svg',
     ),
     _TabSpec(
       label: '通讯录',
-      icon: Icons.contacts_outlined,
-      activeIcon: Icons.contacts,
+      icon: 'assets/icons/address-book-outlined.svg',
+      activeIcon: 'assets/icons/address-book-filled.svg',
     ),
     _TabSpec(
       label: '发现',
-      icon: Icons.explore_outlined,
-      activeIcon: Icons.explore,
+      icon: 'assets/icons/discover-outlined.svg',
+      activeIcon: 'assets/icons/discover-filled.svg',
     ),
     _TabSpec(
       label: '我',
-      icon: Icons.person_outline,
-      activeIcon: Icons.person,
+      icon: 'assets/icons/people-outlined.svg',
+      activeIcon: 'assets/icons/people-filled.svg',
     ),
   ];
 
@@ -106,11 +107,23 @@ class _HomePageState extends State<HomePage> {
         items: [
           for (final t in _tabs)
             BottomNavigationBarItem(
-              icon: Icon(t.icon, size: WxIconSize.large),
-              activeIcon: Icon(
+              icon: SvgPicture.asset(
+                t.icon,
+                width: WxIconSize.large,
+                height: WxIconSize.large,
+                colorFilter: const ColorFilter.mode(
+                  Colors.black,
+                  BlendMode.srcIn,
+                ),
+              ),
+              activeIcon: SvgPicture.asset(
                 t.activeIcon,
-                size: WxIconSize.large,
-                color: WxColors.green,
+                width: WxIconSize.large,
+                height: WxIconSize.large,
+                colorFilter: const ColorFilter.mode(
+                  WxColors.green,
+                  BlendMode.srcIn,
+                ),
               ),
               label: t.label,
             ),
@@ -122,8 +135,8 @@ class _HomePageState extends State<HomePage> {
 
 class _TabSpec {
   final String label;
-  final IconData icon;
-  final IconData activeIcon;
+  final String icon;
+  final String activeIcon;
   const _TabSpec({
     required this.label,
     required this.icon,

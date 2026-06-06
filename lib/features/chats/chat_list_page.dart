@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/theme/design_tokens.dart';
 import '../../data/models/chat.dart';
@@ -178,22 +179,40 @@ class _ChatListPageState extends State<ChatListPage> {
   @override
   Widget build(BuildContext context) {
     final me = _auth.allAccounts.isNotEmpty ? _auth.allAccounts.first : null;
+    final totalUnread = _items.fold<int>(0, (sum, item) => sum + item.unreadCount);
     return Scaffold(
       backgroundColor: WxColors.bg,
       appBar: AppBar(
-        title: const Text('微信'),
-        centerTitle: false,
+        title: Text(totalUnread > 0 ? '微信($totalUnread)' : '微信'),
+        centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
+            icon: SvgPicture.asset(
+              'assets/icons/search-outlined.svg',
+              width: 24,
+              height: 24,
+              colorFilter: const ColorFilter.mode(
+                Colors.black,
+                BlendMode.srcIn,
+              ),
+            ),
             onPressed: () {
               _showSnack('搜索 (Mock)');
             },
           ),
           IconButton(
-            icon: const Icon(Icons.add_circle_outline, size: 24),
+            icon: SvgPicture.asset(
+              'assets/icons/plus-circle.svg',
+              width: 24,
+              height: 24,
+              colorFilter: const ColorFilter.mode(
+                Colors.black,
+                BlendMode.srcIn,
+              ),
+            ),
             onPressed: _showTopMenu,
           ),
+          const SizedBox(width: 8),
         ],
       ),
       // 用 RefreshIndicator 统一包住"加载中 / 空态 / 列表"三种情况，
@@ -460,60 +479,70 @@ class _ChatListRow extends StatelessWidget {
               const SizedBox(width: WxSpace.md),
               // 主体
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            item.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: WxFontSize.bodyLarge,
-                              color: WxColors.textPrimary,
-                              fontWeight: WxFontWeight.medium,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          _formatTime(item.lastMessageTime),
-                          style: TextStyle(
-                            fontSize: WxFontSize.small,
-                            color: item.unreadCount > 0
-                                ? WxColors.textSecondary
-                                : WxColors.textTertiary,
-                          ),
-                        ),
-                      ],
+                child: Container(
+                  height: 72,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Color(0xFFE5E5E5), // faint divider color
+                        width: 0.5,
+                      ),
                     ),
-                    const SizedBox(height: WxSpace.xs),
-                    Row(
-                      children: [
-                        if (item.muted)
-                          const Padding(
-                            padding: EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.notifications_off,
-                              size: 14,
-                              color: WxColors.textTertiary,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              item.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 16.5,
+                                color: WxColors.textPrimary,
+                                fontWeight: FontWeight.w400, // WeChat uses regular weight for names
+                              ),
                             ),
                           ),
-                        Expanded(
-                          child: Text(
-                            item.lastMessagePreview,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                          Text(
+                            _formatTime(item.lastMessageTime),
                             style: const TextStyle(
-                              fontSize: WxFontSize.body,
-                              color: WxColors.textSecondary,
+                              fontSize: 12,
+                              color: Color(0xFFB2B2B2), // WeChat time text color
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          if (item.muted)
+                            const Padding(
+                              padding: EdgeInsets.only(right: 4),
+                              child: Icon(
+                                Icons.notifications_off,
+                                size: 14,
+                                color: WxColors.textTertiary,
+                              ),
+                            ),
+                          Expanded(
+                            child: Text(
+                              item.lastMessagePreview,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 13.5,
+                                color: Color(0xFF999999), // WeChat subtitle color
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
