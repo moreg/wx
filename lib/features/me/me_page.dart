@@ -50,6 +50,27 @@ class _MePageState extends State<MePage> {
           ),
           const SizedBox(height: 8),
           const _ListItem(
+            icon: 'assets/icons/weui-camera.svg',
+            iconColor: Color(0xFFFA9D3B),
+            label: '视频号',
+            showArrow: true,
+          ),
+          const _ListDivider(),
+          const _ListItem(
+            icon: 'assets/icons/play2-outlined.svg',
+            iconColor: Color(0xFFE64340),
+            label: '直播',
+            showArrow: true,
+          ),
+          const _ListDivider(),
+          const _ListItem(
+            icon: 'assets/icons/pay-vendor.svg',
+            iconColor: Color(0xFFFA9D3B),
+            label: '小店',
+            showArrow: true,
+          ),
+          const SizedBox(height: 8),
+          const _ListItem(
             icon: 'assets/icons/favorites.svg',
             iconColor: null, // Colorful intrinsic icon
             label: '收藏',
@@ -66,23 +87,8 @@ class _MePageState extends State<MePage> {
           _ListItem(
             icon: 'assets/icons/cards.svg',
             iconColor: WxColors.linkBlue,
-            label: '作品',
+            label: '卡包',
             showArrow: true,
-            trailingWidget: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('添加第1个作品', style: TextStyle(color: WxColors.textHint, fontSize: 16)),
-                const SizedBox(width: 8),
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: WxColors.expense,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ],
-            ),
           ),
           const _ListDivider(),
           const _ListItem(
