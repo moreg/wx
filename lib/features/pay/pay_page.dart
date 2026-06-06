@@ -1,10 +1,3 @@
-// 支付/服务 — 完整静态 UI
-//
-// 1:1 复刻微信 iOS 支付/服务页：4 列宫格 × 4 行 = 16 项，
-// 含金融（钱包、信用卡还款）、生活（生活缴费、医疗、腾讯服务等）。
-//
-// 宫格之间用 0.5px 分割线分组（每行 4 列用竖线，行间用横线）。
-// 顶部留一个"我的钱包"突出入口（点击 → /wallet）。
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,66 +6,67 @@ import '../../core/theme/design_tokens.dart';
 class PayPage extends StatelessWidget {
   const PayPage({super.key});
 
-  static const List<_PayItem> _topItems = <_PayItem>[
-    _PayItem(icon: Icons.account_balance_wallet_outlined, label: '收付款', color: Color(0xFF07C160)),
-    _PayItem(icon: Icons.account_balance_wallet, label: '钱包', color: Color(0xFF576B95)),
-    _PayItem(icon: Icons.credit_card, label: '信用卡还款', color: Color(0xFFE64340)),
-    _PayItem(icon: Icons.savings_outlined, label: '理财通', color: Color(0xFFFA9D3B)),
-  ];
-
-  static const List<_PayItem> _bottomItems = <_PayItem>[
-    _PayItem(icon: Icons.water_drop_outlined, label: '生活缴费', color: Color(0xFF4DCDB6)),
-    _PayItem(icon: Icons.local_hospital_outlined, label: '医疗健康', color: Color(0xFFE64340)),
-    _PayItem(icon: Icons.movie_outlined, label: '电影演出', color: Color(0xFFFA9D3B)),
-    _PayItem(icon: Icons.directions_bus_outlined, label: '出行服务', color: Color(0xFF576B95)),
-    _PayItem(icon: Icons.house_outlined, label: '腾讯服务', color: Color(0xFF07C160)),
-    _PayItem(icon: Icons.phone_iphone, label: '手机充值', color: Color(0xFFB37FE6)),
-    _PayItem(icon: Icons.devices_other, label: '数码电器', color: Color(0xFF66CCFF)),
-    _PayItem(icon: Icons.card_giftcard, label: '微信礼物', color: Color(0xFFE6739C)),
-    _PayItem(icon: Icons.local_offer_outlined, label: '信用卡', color: Color(0xFFFA9D3B)),
-    _PayItem(icon: Icons.school_outlined, label: '教育公益', color: Color(0xFF07C160)),
-    _PayItem(icon: Icons.work_outline, label: '企业微信', color: Color(0xFF576B95)),
-    _PayItem(icon: Icons.more_horiz, label: '更多服务', color: Color(0xFF888888)),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: WxColors.bg,
+      backgroundColor: const Color(0xFFEDEDED),
       appBar: AppBar(
-        title: const Text('支付'),
+        title: const Text('服务', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18)),
         centerTitle: true,
+        backgroundColor: const Color(0xFFEDEDED),
+        elevation: 0,
         actions: const <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: WxSpace.md),
+            padding: EdgeInsets.only(right: 16),
             child: Icon(Icons.more_horiz),
           ),
         ],
       ),
       body: ListView(
-        children: <Widget>[
-          // 顶部余额卡片（点击进入 /wallet）
-          const _BalanceCard(),
-          const SizedBox(height: WxSpace.sm),
-          // 4 列宫格
-          _PayGrid(items: _topItems, columns: 4),
-          const SizedBox(height: WxSpace.sm),
-          // 4 列宫格（更多服务）
-          _PayGrid(items: _bottomItems, columns: 4),
-          const SizedBox(height: WxSpace.sm),
-          // 帮助中心
-          const _PayListItem(
-            icon: Icons.help_outline,
-            iconColor: WxColors.textSecondary,
-            label: '帮助中心',
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        children: const <Widget>[
+          _TopGreenCard(),
+          SizedBox(height: 12),
+          _ServiceGroup(
+            title: '金融理财',
+            items: [
+              _PayItem(icon: Icons.credit_card, label: '信用卡还款', color: Color(0xFF07C160)),
+              _PayItem(icon: Icons.savings_outlined, label: '理财通', color: Color(0xFF10AEFF)),
+              _PayItem(icon: Icons.health_and_safety_outlined, label: '保险服务', color: Color(0xFFFA9D3B)),
+            ],
           ),
-          _PayListItem(
-            icon: Icons.chat_bubble_outline,
-            iconColor: WxColors.green,
-            label: '客户咨询',
-            showArrow: true,
+          SizedBox(height: 12),
+          _ServiceGroup(
+            title: '生活服务',
+            items: [
+              _PayItem(icon: Icons.phone_android, label: '手机充值', color: Color(0xFF10AEFF)),
+              _PayItem(icon: Icons.water_drop_outlined, label: '生活缴费', color: Color(0xFF07C160)),
+              _PayItem(icon: Icons.monetization_on_outlined, label: 'Q币充值', color: Color(0xFF10AEFF)),
+              _PayItem(icon: Icons.location_city_outlined, label: '城市服务', color: Color(0xFF07C160)),
+              _PayItem(icon: Icons.volunteer_activism_outlined, label: '腾讯公益', color: Color(0xFFFA5151)),
+              _PayItem(icon: Icons.medical_services_outlined, label: '医疗健康', color: Color(0xFFFA9D3B)),
+            ],
           ),
-          const SizedBox(height: WxSpace.huge),
+          SizedBox(height: 12),
+          _ServiceGroup(
+            title: '交通出行',
+            items: [
+              _PayItem(icon: Icons.directions_bus_outlined, label: '出行服务', color: Color(0xFF10AEFF)),
+              _PayItem(icon: Icons.flight_takeoff, label: '火车票机票', color: Color(0xFF07C160)),
+              _PayItem(icon: Icons.local_taxi_outlined, label: '滴滴出行', color: Color(0xFFFA9D3B)),
+              _PayItem(icon: Icons.hotel_outlined, label: '酒店民宿', color: Color(0xFF07C160)),
+            ],
+          ),
+          SizedBox(height: 12),
+          _ServiceGroup(
+            title: '购物消费',
+            items: [
+              _PayItem(icon: Icons.shopping_bag_outlined, label: '京东购物', color: Color(0xFFFA5151)),
+              _PayItem(icon: Icons.fastfood_outlined, label: '美团外卖', color: Color(0xFFFA9D3B)),
+              _PayItem(icon: Icons.movie_outlined, label: '电影演出', color: Color(0xFFFA5151)),
+            ],
+          ),
+          SizedBox(height: WxSpace.huge),
         ],
       ),
     );
@@ -87,69 +81,73 @@ class _PayItem {
 }
 
 // =====================================================================
-// 顶部余额卡片（点击进入钱包）
+// 顶部绿色卡片（收付款 / 钱包）
 // =====================================================================
 
-class _BalanceCard extends StatelessWidget {
-  const _BalanceCard();
+class _TopGreenCard extends StatelessWidget {
+  const _TopGreenCard();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: WxColors.card,
-      child: InkWell(
-        onTap: () => context.push('/wallet'),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: WxSpace.lg,
-            vertical: WxSpace.lg,
-          ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: WxColors.green,
-                  borderRadius: BorderRadius.circular(WxRadius.sm),
-                ),
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.account_balance_wallet,
-                  color: Colors.white,
-                  size: 22,
-                ),
-              ),
-              const SizedBox(width: WxSpace.md),
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      '钱包',
-                      style: TextStyle(
-                        fontSize: WxFontSize.bodyLarge,
-                        color: WxColors.textPrimary,
+      decoration: BoxDecoration(
+        color: const Color(0xFF27A75E), // A slightly softer green than primary
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: InkWell(
+                onTap: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('收付款 TODO'))),
+                borderRadius: const BorderRadius.horizontal(left: Radius.circular(12)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 36),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.qr_code_scanner, color: Colors.white, size: 36),
+                      SizedBox(height: 12),
+                      Text(
+                        '收付款',
+                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
                       ),
-                    ),
-                    SizedBox(height: 2),
-                    Text(
-                      '查看余额、零钱、银行卡',
-                      style: TextStyle(
-                        fontSize: WxFontSize.small,
-                        color: WxColors.textSecondary,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              const Icon(
-                Icons.chevron_right,
-                color: WxColors.textHint,
-                size: 18,
+            ),
+            Container(
+              width: 0.5,
+              margin: const EdgeInsets.symmetric(vertical: 24),
+              color: Colors.white.withOpacity(0.3),
+            ),
+            Expanded(
+              child: InkWell(
+                onTap: () => context.push('/wallet'),
+                borderRadius: const BorderRadius.horizontal(right: Radius.circular(12)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 36),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(Icons.account_balance_wallet_outlined, color: Colors.white, size: 36),
+                      SizedBox(height: 12),
+                      Text(
+                        '钱包',
+                        style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        '¥0.74',
+                        style: TextStyle(color: Colors.white70, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -157,7 +155,44 @@ class _BalanceCard extends StatelessWidget {
 }
 
 // =====================================================================
-// 4 列宫格
+// 带标题的宫格服务组
+// =====================================================================
+
+class _ServiceGroup extends StatelessWidget {
+  final String title;
+  final List<_PayItem> items;
+  const _ServiceGroup({required this.title, required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 14,
+                color: WxColors.textSecondary,
+              ),
+            ),
+          ),
+          _PayGrid(items: items, columns: 4),
+          const SizedBox(height: 12),
+        ],
+      ),
+    );
+  }
+}
+
+// =====================================================================
+// 宫格组件
 // =====================================================================
 
 class _PayGrid extends StatelessWidget {
@@ -167,35 +202,23 @@ class _PayGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: WxColors.card,
-      padding: const EdgeInsets.symmetric(vertical: WxSpace.md),
-      child: Column(
-        children: <Widget>[
-          for (int row = 0; row < (items.length / columns).ceil(); row++)
-            IntrinsicHeight(
-              child: Row(
-                children: <Widget>[
-                  for (int col = 0; col < columns; col++) ...<Widget>[
-                    Expanded(
-                      child: _PayCell(
-                        item: row * columns + col < items.length
-                            ? items[row * columns + col]
-                            : null,
-                      ),
-                    ),
-                    if (col < columns - 1)
-                      const VerticalDivider(
-                        width: 0.5,
-                        thickness: 0.5,
-                        color: WxColors.divider,
-                      ),
-                  ],
-                ],
-              ),
-            ),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        for (int row = 0; row < (items.length / columns).ceil(); row++)
+          Row(
+            children: <Widget>[
+              for (int col = 0; col < columns; col++) ...<Widget>[
+                Expanded(
+                  child: _PayCell(
+                    item: row * columns + col < items.length
+                        ? items[row * columns + col]
+                        : null,
+                  ),
+                ),
+              ],
+            ],
+          ),
+      ],
     );
   }
 }
@@ -212,108 +235,35 @@ class _PayCell extends StatelessWidget {
     final it = item!;
     return InkWell(
       onTap: () {
-        if (it.label == '钱包') {
-          context.push('/wallet');
-          return;
-        }
-        _showToast(context, it.label);
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(
+            SnackBar(
+              content: Text('${it.label} - TODO'),
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 1),
+            ),
+          );
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: WxSpace.md),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: it.color.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(WxRadius.md),
-              ),
-              alignment: Alignment.center,
-              child: Icon(it.icon, color: it.color, size: 22),
-            ),
-            const SizedBox(height: WxSpace.xs),
+            Icon(it.icon, color: it.color, size: 28),
+            const SizedBox(height: 12),
             Text(
               it.label,
               style: const TextStyle(
-                fontSize: WxFontSize.small,
+                fontSize: 13,
                 color: WxColors.textPrimary,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
       ),
     );
   }
-}
-
-// =====================================================================
-// 底部列表项
-// =====================================================================
-
-class _PayListItem extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String label;
-  final bool showArrow;
-  const _PayListItem({
-    required this.icon,
-    required this.iconColor,
-    required this.label,
-    this.showArrow = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: WxColors.card,
-      child: SizedBox(
-        height: 56,
-        child: InkWell(
-          onTap: () => _showToast(context, label),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: WxSpace.lg,
-              vertical: WxSpace.sm,
-            ),
-            child: Row(
-              children: <Widget>[
-                Icon(icon, color: iconColor, size: 22),
-                const SizedBox(width: WxSpace.md),
-                Expanded(
-                  child: Text(
-                    label,
-                    style: const TextStyle(
-                      fontSize: WxFontSize.bodyLarge,
-                      color: WxColors.textPrimary,
-                    ),
-                  ),
-                ),
-                if (showArrow)
-                  const Icon(
-                    Icons.chevron_right,
-                    color: WxColors.textHint,
-                    size: 18,
-                  ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-void _showToast(BuildContext context, String label) {
-  ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
-    ..showSnackBar(
-      SnackBar(
-        content: Text('$label - TODO'),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.fromLTRB(24, 0, 24, 80),
-        duration: const Duration(seconds: 2),
-      ),
-    );
 }

@@ -33,11 +33,12 @@ class _MePageState extends State<MePage> {
         children: <Widget>[
           _ProfileHeader(loader: _loadCurrentAccount),
           const SizedBox(height: 8),
-          const _ListItem(
+          _ListItem(
             icon: 'assets/icons/wechat.svg',
-            iconColor: Color(0xFF07C160),
+            iconColor: const Color(0xFF07C160),
             label: '服务',
             showArrow: true,
+            onTap: () => context.push('/pay'),
           ),
           const SizedBox(height: 8),
           const _ListItem(
