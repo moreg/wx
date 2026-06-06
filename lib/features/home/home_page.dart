@@ -101,33 +101,74 @@ class _HomePageState extends State<HomePage> {
           MePage(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _index,
-        onTap: _onTap,
-        items: [
-          for (final t in _tabs)
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                t.icon,
-                width: WxIconSize.large,
-                height: WxIconSize.large,
-                colorFilter: const ColorFilter.mode(
-                  Colors.black,
-                  BlendMode.srcIn,
-                ),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Color(0xFFE5E5E5), width: 0.5),
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _index,
+          onTap: _onTap,
+          items: [
+            for (int idx = 0; idx < _tabs.length; idx++)
+              BottomNavigationBarItem(
+                icon: idx == 0
+                    ? Badge(
+                        label: const Text('23'), // mock unread count
+                        backgroundColor: WxColors.unread,
+                        textColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                        offset: const Offset(12, -4),
+                        child: SvgPicture.asset(
+                          _tabs[idx].icon,
+                          width: 24,
+                          height: 24,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      )
+                    : SvgPicture.asset(
+                        _tabs[idx].icon,
+                        width: 24,
+                        height: 24,
+                        colorFilter: const ColorFilter.mode(
+                          Colors.black,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                activeIcon: idx == 0
+                    ? Badge(
+                        label: const Text('23'),
+                        backgroundColor: WxColors.unread,
+                        textColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                        offset: const Offset(12, -4),
+                        child: SvgPicture.asset(
+                          _tabs[idx].activeIcon,
+                          width: 24,
+                          height: 24,
+                          colorFilter: const ColorFilter.mode(
+                            WxColors.green,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      )
+                    : SvgPicture.asset(
+                        _tabs[idx].activeIcon,
+                        width: 24,
+                        height: 24,
+                        colorFilter: const ColorFilter.mode(
+                          WxColors.green,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                label: _tabs[idx].label,
               ),
-              activeIcon: SvgPicture.asset(
-                t.activeIcon,
-                width: WxIconSize.large,
-                height: WxIconSize.large,
-                colorFilter: const ColorFilter.mode(
-                  WxColors.green,
-                  BlendMode.srcIn,
-                ),
-              ),
-              label: t.label,
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

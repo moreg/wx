@@ -153,19 +153,21 @@ class WxTheme {
         scrolledUnderElevation: 0,
         centerTitle: false,
         titleTextStyle: TextStyle(
-          fontSize: WxFontSize.title,
-          fontWeight: WxFontWeight.medium,
+          fontSize: WxFontSize.titleLarge, // 17px
+          fontWeight: WxFontWeight.semibold, // Bolder
           color: WxColors.textPrimary,
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: WxColors.card,
+        backgroundColor: WxColors.bgLight,
         selectedItemColor: WxColors.green,
-        unselectedItemColor: WxColors.textSecondary,
+        unselectedItemColor: WxColors.textPrimary,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        elevation: WxElevation.sm,
+        elevation: 0,
+        selectedLabelStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+        unselectedLabelStyle: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
