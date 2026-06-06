@@ -141,7 +141,15 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       backgroundColor: WxColors.bgLight,
       elevation: 0.5,
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios, size: 20),
+        icon: SvgPicture.asset(
+          'assets/icons/weui-back.svg',
+          width: 20,
+          height: 20,
+          colorFilter: const ColorFilter.mode(
+            WxColors.textPrimary,
+            BlendMode.srcIn,
+          ),
+        ),
         onPressed: () {
           if (context.canPop()) {
             context.pop();
