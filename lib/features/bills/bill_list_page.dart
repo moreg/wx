@@ -28,7 +28,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../core/theme/design_tokens.dart';
@@ -205,9 +204,7 @@ class _BillListPageState extends ConsumerState<BillListPage> {
         _BillEntry(bills: g.bills),
       ],
     ];
-  }
 
-  bool _filterIsDefault(BillFilter f) => f.isEmpty;
 
   Widget _buildEmpty() {
     return ListView(
