@@ -1,0 +1,203 @@
+{
+  "messages": [
+    {
+      "id": "t_ajie_1",
+      "chatId": "chat_ajie",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T09:30:00"
+    },
+    {
+      "id": "m_ajie_1",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T09:30:00",
+      "text": "早上好，昨晚的 bug 排查完了没？"
+    },
+    {
+      "id": "m_ajie_2",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T09:35:00",
+      "text": "查到了，是 cache key 拼接错了"
+    },
+    {
+      "id": "m_ajie_3",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T09:36:00",
+      "text": "好的，我 review 一下你的 PR"
+    },
+    {
+      "id": "m_ajie_4",
+      "chatId": "chat_ajie",
+      "type": "image",
+      "direction": "other",
+      "time": "2026-06-03T09:40:00",
+      "imageUrl": "assets/images/avatars/avatar_2.png",
+      "imageWidth": 320,
+      "imageHeight": 240
+    },
+    {
+      "id": "t_ajie_2",
+      "chatId": "chat_ajie",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T14:00:00"
+    },
+    {
+      "id": "m_ajie_5",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T14:00:00",
+      "text": "你看过那段 K8s 部署的 yaml 没？"
+    },
+    {
+      "id": "m_ajie_6",
+      "chatId": "chat_ajie",
+      "type": "voice",
+      "direction": "other",
+      "time": "2026-06-03T14:05:00",
+      "audioDuration": 28
+    },
+    {
+      "id": "m_ajie_7",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T14:06:00",
+      "text": "OK"
+    },
+    {
+      "id": "t_ajie_3",
+      "chatId": "chat_ajie",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T10:15:00"
+    },
+    {
+      "id": "m_ajie_8",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T10:15:00",
+      "text": "周五发布日，要不要先联调一下？"
+    },
+    {
+      "id": "m_ajie_9",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T10:20:00",
+      "text": "行，下午 2 点 staging 环境"
+    },
+    {
+      "id": "m_ajie_10",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T10:22:00",
+      "text": "好，我准备下数据"
+    },
+    {
+      "id": "m_ajie_11",
+      "chatId": "chat_ajie",
+      "type": "image",
+      "direction": "self",
+      "time": "2026-06-04T10:25:00",
+      "imageUrl": "assets/images/avatars/avatar_1.png",
+      "imageWidth": 280,
+      "imageHeight": 200
+    },
+    {
+      "id": "t_ajie_4",
+      "chatId": "chat_ajie",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T16:30:00"
+    },
+    {
+      "id": "m_ajie_12",
+      "chatId": "chat_ajie",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-04T16:30:00",
+      "text": "你撤回了一条消息"
+    },
+    {
+      "id": "m_ajie_13",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T16:35:00",
+      "text": "staging 数据有问题，我 dump 出来你看下"
+    },
+    {
+      "id": "m_ajie_14",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T16:40:00",
+      "text": "看吧"
+    },
+    {
+      "id": "m_ajie_15",
+      "chatId": "chat_ajie",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-04T16:42:00",
+      "text": "阿杰撤回了一条消息"
+    },
+    {
+      "id": "t_ajie_5",
+      "chatId": "chat_ajie",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T09:00:00"
+    },
+    {
+      "id": "m_ajie_16",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T09:00:00",
+      "text": "今天能 release 吗？"
+    },
+    {
+      "id": "m_ajie_17",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T09:05:00",
+      "text": "可以，下班前发"
+    },
+    {
+      "id": "m_ajie_18",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T17:00:00",
+      "text": "我先走了，你发布完通知我"
+    },
+    {
+      "id": "m_ajie_19",
+      "chatId": "chat_ajie",
+      "type": "voice",
+      "direction": "self",
+      "time": "2026-06-05T18:10:00",
+      "audioDuration": 15
+    },
+    {
+      "id": "m_ajie_20",
+      "chatId": "chat_ajie",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T18:15:00",
+      "text": "代码我提 MR 了，帮忙 review 一下"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "messages": [
+    {
+      "id": "t_linda_1",
+      "chatId": "chat_linda",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-01T10:00:00"
+    },
+    {
+      "id": "m_linda_1",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T10:00:00",
+      "text": "新一期的设计稿出了，麻烦看下"
+    },
+    {
+      "id": "m_linda_2",
+      "chatId": "chat_linda",
+      "type": "image",
+      "direction": "other",
+      "time": "2026-06-01T10:05:00",
+      "imageUrl": "assets/images/avatars/avatar_3.png",
+      "imageWidth": 320,
+      "imageHeight": 480
+    },
+    {
+      "id": "m_linda_3",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-01T10:30:00",
+      "text": "看着不错，我改一下"
+    },
+    {
+      "id": "t_linda_2",
+      "chatId": "chat_linda",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T14:00:00"
+    },
+    {
+      "id": "m_linda_4",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T14:00:00",
+      "text": "改完发我看看"
+    },
+    {
+      "id": "m_linda_5",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-02T14:30:00",
+      "text": "好"
+    },
+    {
+      "id": "m_linda_6",
+      "chatId": "chat_linda",
+      "type": "location",
+      "direction": "other",
+      "time": "2026-06-02T16:00:00",
+      "locationName": "上海·静安嘉里中心",
+      "locationAddress": "上海市静安区南京西路 1515 号"
+    },
+    {
+      "id": "m_linda_7",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T16:01:00",
+      "text": "明天下午我在这边开评审，过来坐坐？"
+    },
+    {
+      "id": "m_linda_8",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-02T16:05:00",
+      "text": "我去！3 点？"
+    },
+    {
+      "id": "m_linda_9",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T16:06:00",
+      "text": "对，3 点准时"
+    },
+    {
+      "id": "t_linda_3",
+      "chatId": "chat_linda",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T19:00:00"
+    },
+    {
+      "id": "m_linda_10",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T19:00:00",
+      "text": "到家了，晚饭吃啥？"
+    },
+    {
+      "id": "m_linda_11",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T19:05:00",
+      "text": "点外卖吧，懒得做饭"
+    },
+    {
+      "id": "m_linda_12",
+      "chatId": "chat_linda",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-03T19:10:00",
+      "text": "Linda撤回了一条消息"
+    },
+    {
+      "id": "m_linda_13",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T19:11:00",
+      "text": "算了不吃了，我刚吃了"
+    },
+    {
+      "id": "t_linda_4",
+      "chatId": "chat_linda",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T21:00:00"
+    },
+    {
+      "id": "m_linda_14",
+      "chatId": "chat_linda",
+      "type": "transfer",
+      "direction": "other",
+      "time": "2026-06-04T21:00:00",
+      "transferAmount": 500.0,
+      "transferTitle": "转账",
+      "transferStatus": "已收款"
+    },
+    {
+      "id": "m_linda_15",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T21:00:30",
+      "text": "上个月的设计费"
+    },
+    {
+      "id": "m_linda_16",
+      "chatId": "chat_linda",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T21:15:00",
+      "text": "收到了，谢谢！"
+    }
+  ]
+}

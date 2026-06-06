@@ -1,0 +1,76 @@
+name: wx_clone
+description: "1:1 clone of WeChat mobile UI with focus on bills feature."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # State management
+  flutter_riverpod: ">=2.5.0 <3.0.0"
+
+  # Routing
+  go_router: ">=14.0.0 <15.0.0"
+
+  # SVG icons
+  flutter_svg: ^2.0.10+1
+
+  # Image caching (for local asset too)
+  cached_network_image: ^3.4.1
+
+  # Local storage
+  shared_preferences: ^2.3.2
+
+  # Time / date formatting
+  intl: ">=0.19.0 <0.20.0"
+  timeago: ^3.7.0
+
+  # File picker for bill CSV import
+  file_picker: ">=8.0.0 <9.0.0"
+
+  # CSV parsing
+  csv: ">=6.0.0 <7.0.0"
+
+  # Charts for bill statistics
+  fl_chart: ">=0.69.0 <1.0.0"
+
+  # Image saving (Android 13+ uses MediaStore, no permission needed)
+  gal: ^2.3.0
+
+  # App version info
+  package_info_plus: ">=8.0.0 <9.0.0"
+
+  # File system paths (export CSV to app's external files dir)
+  path_provider: ^2.1.4
+
+  # Collections utilities
+  collection: ^1.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/data/
+    - assets/sample/
+    # Chat mock data: 12 conversations + per-chat message lists.
+    # Listed under lib/ per task spec; rootBundle.loadString reads them at
+    # runtime with the same path (see lib/data/repositories/chat_repo.dart).
+    - lib/data/mock/
+    - lib/data/mock/messages/
+
+  # fonts:
+  #   - family: PingFang SC
+  #     fonts:
+  #       - asset: assets/fonts/PingFangSC-Regular.ttf

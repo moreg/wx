@@ -1,0 +1,174 @@
+{
+  "messages": [
+    {
+      "id": "t_ad_1",
+      "chatId": "chat_company_admin",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-30T10:00:00"
+    },
+    {
+      "id": "m_ad_1",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-30T10:00:00",
+      "text": "欢迎关注公司行政公众号"
+    },
+    {
+      "id": "m_ad_2",
+      "chatId": "chat_company_admin",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-05-30T10:01:00",
+      "linkTitle": "公司福利政策（2026 修订）",
+      "linkDescription": "点击查看最新福利政策详情",
+      "linkImageUrl": "assets/images/avatars/avatar_4.png",
+      "linkUrl": "https://example.com/welfare"
+    },
+    {
+      "id": "t_ad_2",
+      "chatId": "chat_company_admin",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T11:00:00"
+    },
+    {
+      "id": "m_ad_3",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T11:00:00",
+      "text": "端午假期安排：6月8日（周一）放假，与周末连休"
+    },
+    {
+      "id": "m_ad_4",
+      "chatId": "chat_company_admin",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-03T11:01:00",
+      "linkTitle": "关于端午假期安排的通知",
+      "linkDescription": "请各部门做好工作安排",
+      "linkImageUrl": "assets/images/avatars/avatar_4.png",
+      "linkUrl": "https://example.com/holiday"
+    },
+    {
+      "id": "m_ad_5",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T11:02:00",
+      "text": "请知悉"
+    },
+    {
+      "id": "t_ad_3",
+      "chatId": "chat_company_admin",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T15:00:00"
+    },
+    {
+      "id": "m_ad_6",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T15:00:00",
+      "text": "本周五下午 4 点全员大会，会议室 A"
+    },
+    {
+      "id": "m_ad_7",
+      "chatId": "chat_company_admin",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-03T15:01:00",
+      "linkTitle": "Q2 全员会议程",
+      "linkDescription": "Q2 复盘 + Q3 展望",
+      "linkImageUrl": "assets/images/avatars/avatar_4.png",
+      "linkUrl": "https://example.com/agenda"
+    },
+    {
+      "id": "m_ad_8",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T15:02:00",
+      "text": "请准时参加"
+    },
+    {
+      "id": "t_ad_4",
+      "chatId": "chat_company_admin",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T09:00:00"
+    },
+    {
+      "id": "m_ad_9",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T09:00:00",
+      "text": "今日办公区空调维修 14:00-16:00，期间请到 3 楼会议室办公"
+    },
+    {
+      "id": "m_ad_10",
+      "chatId": "chat_company_admin",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-04T09:01:00",
+      "linkTitle": "空调维修通知",
+      "linkDescription": "工程部维修排期",
+      "linkImageUrl": "assets/images/avatars/avatar_4.png",
+      "linkUrl": "https://example.com/ac-fix"
+    },
+    {
+      "id": "m_ad_11",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T09:02:00",
+      "text": "带来不便，敬请谅解"
+    },
+    {
+      "id": "t_ad_5",
+      "chatId": "chat_company_admin",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T10:00:00"
+    },
+    {
+      "id": "m_ad_12",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T10:00:00",
+      "text": "端午福利已发放，请查收"
+    },
+    {
+      "id": "m_ad_13",
+      "chatId": "chat_company_admin",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-05T10:01:00",
+      "linkTitle": "端午福利领取说明",
+      "linkDescription": "礼盒已发至前台",
+      "linkImageUrl": "assets/images/avatars/avatar_4.png",
+      "linkUrl": "https://example.com/welfare-dragonboat"
+    },
+    {
+      "id": "m_ad_14",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T10:02:00",
+      "text": "祝大家端午安康！"
+    },
+    {
+      "id": "m_ad_15",
+      "chatId": "chat_company_admin",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T10:03:00",
+      "text": "—— 行政部"
+    }
+  ]
+}

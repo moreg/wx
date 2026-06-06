@@ -1,0 +1,319 @@
+{
+  "messages": [
+    {
+      "id": "t_be_1",
+      "chatId": "chat_backend_group",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-01T10:00:00"
+    },
+    {
+      "id": "m_be_1",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-01T10:00:00",
+      "text": "本周迭代目标同步下：账单筛选 + 导出"
+    },
+    {
+      "id": "m_be_2",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev1",
+      "senderName": "程序员-小张",
+      "time": "2026-06-01T10:05:00",
+      "text": "收到，账单筛选我已经在做了"
+    },
+    {
+      "id": "m_be_3",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-01T10:08:00",
+      "text": "导出呢？"
+    },
+    {
+      "id": "m_be_4",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-01T10:10:00",
+      "text": "我接，工期大概 2 天"
+    },
+    {
+      "id": "m_be_5",
+      "chatId": "chat_backend_group",
+      "type": "groupNotice",
+      "direction": "system",
+      "time": "2026-06-01T10:15:00",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "groupNoticeText": "本周发版日：6 月 5 日（周五）晚 8 点，请相关同学务必在场"
+    },
+    {
+      "id": "t_be_2",
+      "chatId": "chat_backend_group",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T15:30:00"
+    },
+    {
+      "id": "m_be_6",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-02T15:30:00",
+      "text": "staging 部署的代码有问题，反馈个 bug 进来"
+    },
+    {
+      "id": "m_be_7",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev2",
+      "senderName": "程序员-阿杰",
+      "time": "2026-06-02T15:32:00",
+      "text": "我看看"
+    },
+    {
+      "id": "m_be_8",
+      "chatId": "chat_backend_group",
+      "type": "image",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-02T15:35:00",
+      "imageUrl": "assets/images/avatars/avatar_4.png",
+      "imageWidth": 320,
+      "imageHeight": 180
+    },
+    {
+      "id": "m_be_9",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-02T15:35:30",
+      "text": "看这个截图"
+    },
+    {
+      "id": "m_be_10",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev2",
+      "senderName": "程序员-阿杰",
+      "time": "2026-06-02T15:40:00",
+      "text": "哦是 NPE，我修"
+    },
+    {
+      "id": "m_be_11",
+      "chatId": "chat_backend_group",
+      "type": "emoji",
+      "direction": "other",
+      "senderId": "wxid_dev1",
+      "senderName": "程序员-小张",
+      "time": "2026-06-02T15:42:00",
+      "text": "🐛"
+    },
+    {
+      "id": "t_be_3",
+      "chatId": "chat_backend_group",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T11:00:00"
+    },
+    {
+      "id": "m_be_12",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-03T11:00:00",
+      "text": "今天中午前把 MR 都提了，下午 review"
+    },
+    {
+      "id": "m_be_13",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev3",
+      "senderName": "程序员-小李",
+      "time": "2026-06-03T11:05:00",
+      "text": "好的"
+    },
+    {
+      "id": "m_be_14",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T11:30:00",
+      "text": "导出功能的 MR 提了，麻烦大家 review"
+    },
+    {
+      "id": "m_be_15",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev2",
+      "senderName": "程序员-阿杰",
+      "time": "2026-06-03T11:35:00",
+      "text": "@我来看"
+    },
+    {
+      "id": "m_be_16",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-03T14:00:00",
+      "text": "导出我能用一下 staging 吗"
+    },
+    {
+      "id": "m_be_17",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T14:02:00",
+      "text": "可以，账号密码我私信你"
+    },
+    {
+      "id": "t_be_4",
+      "chatId": "chat_backend_group",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T16:00:00"
+    },
+    {
+      "id": "m_be_18",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-04T16:00:00",
+      "text": "导出功能测过了，列都对得上"
+    },
+    {
+      "id": "m_be_19",
+      "chatId": "chat_backend_group",
+      "type": "emoji",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-04T16:05:00",
+      "text": "🎉"
+    },
+    {
+      "id": "m_be_20",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_qa",
+      "senderName": "测试-小赵",
+      "time": "2026-06-04T16:06:00",
+      "text": "不过发现个边界 case：空账单导出文件名带后缀"
+    },
+    {
+      "id": "m_be_21",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T16:10:00",
+      "text": "我修一下"
+    },
+    {
+      "id": "m_be_22",
+      "chatId": "chat_backend_group",
+      "type": "image",
+      "direction": "self",
+      "time": "2026-06-04T16:30:00",
+      "imageUrl": "assets/images/avatars/avatar_3.png",
+      "imageWidth": 320,
+      "imageHeight": 200
+    },
+    {
+      "id": "m_be_23",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T16:31:00",
+      "text": "改好了，看截图"
+    },
+    {
+      "id": "t_be_5",
+      "chatId": "chat_backend_group",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T10:00:00"
+    },
+    {
+      "id": "m_be_24",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-05T10:00:00",
+      "text": "今天发版，所有人确认下自己负责的模块"
+    },
+    {
+      "id": "m_be_25",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T10:05:00",
+      "text": "导出 + 筛选已 ready"
+    },
+    {
+      "id": "m_be_26",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev1",
+      "senderName": "程序员-小张",
+      "time": "2026-06-05T10:10:00",
+      "text": "搜索 ready"
+    },
+    {
+      "id": "m_be_27",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dev2",
+      "senderName": "程序员-阿杰",
+      "time": "2026-06-05T10:15:00",
+      "text": "导入 ready"
+    },
+    {
+      "id": "m_be_28",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-05T17:00:00",
+      "text": "20:00 准时发，提前 10 分钟上线 staging"
+    },
+    {
+      "id": "m_be_29",
+      "chatId": "chat_backend_group",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_lead",
+      "senderName": "组长-刘工",
+      "time": "2026-06-05T17:30:00",
+      "text": "@所有人 今晚 8 点发版，别忘了"
+    }
+  ]
+}

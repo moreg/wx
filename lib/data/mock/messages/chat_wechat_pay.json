@@ -1,0 +1,178 @@
+{
+  "messages": [
+    {
+      "id": "t_wp_1",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-30T09:00:00"
+    },
+    {
+      "id": "m_wp_1",
+      "chatId": "chat_wechat_pay",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-05-30T09:00:00",
+      "text": "你已成功开通微信支付分"
+    },
+    {
+      "id": "m_wp_2",
+      "chatId": "chat_wechat_pay",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-05-30T09:01:00",
+      "linkTitle": "微信支付分",
+      "linkDescription": "查看你的支付分详情",
+      "linkImageUrl": "assets/images/avatars/avatar_3.png",
+      "linkUrl": "https://example.com/wxcredit"
+    },
+    {
+      "id": "t_wp_2",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-01T12:00:00"
+    },
+    {
+      "id": "m_wp_3",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T12:00:00",
+      "text": "零钱通 5 月 30 日收益：¥0.85"
+    },
+    {
+      "id": "t_wp_3",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T20:45:00"
+    },
+    {
+      "id": "m_wp_4",
+      "chatId": "chat_wechat_pay",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-03T20:45:00",
+      "linkTitle": "收款 200.00 元",
+      "linkDescription": "来自 Linda 的转账",
+      "linkImageUrl": "assets/images/avatars/avatar_3.png",
+      "linkUrl": "https://example.com/transfer/1"
+    },
+    {
+      "id": "m_wp_5",
+      "chatId": "chat_wechat_pay",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-03T20:46:00",
+      "text": "资金已存入零钱"
+    },
+    {
+      "id": "m_wp_6",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T20:47:00",
+      "text": "本月已累计收款 850.00 元"
+    },
+    {
+      "id": "t_wp_4",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T08:00:00"
+    },
+    {
+      "id": "m_wp_7",
+      "chatId": "chat_wechat_pay",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-04T08:00:00",
+      "text": "每日签到：+10 积分"
+    },
+    {
+      "id": "m_wp_8",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T08:00:30",
+      "text": "零钱通 6 月 3 日收益：¥0.92"
+    },
+    {
+      "id": "t_wp_5",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T18:30:00"
+    },
+    {
+      "id": "m_wp_9",
+      "chatId": "chat_wechat_pay",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-04T18:30:00",
+      "linkTitle": "信用卡还款提醒",
+      "linkDescription": "尾号 5678 信用卡 6 月 5 日应还 ¥3,250.00",
+      "linkImageUrl": "assets/images/avatars/avatar_3.png",
+      "linkUrl": "https://example.com/cc-repay"
+    },
+    {
+      "id": "m_wp_10",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T18:30:30",
+      "text": "设置自动还款可享积分奖励"
+    },
+    {
+      "id": "t_wp_6",
+      "chatId": "chat_wechat_pay",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T08:00:00"
+    },
+    {
+      "id": "m_wp_11",
+      "chatId": "chat_wechat_pay",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-05T08:00:00",
+      "text": "每日签到：+10 积分"
+    },
+    {
+      "id": "m_wp_12",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T08:00:30",
+      "text": "零钱通 6 月 4 日收益：¥0.88"
+    },
+    {
+      "id": "m_wp_13",
+      "chatId": "chat_wechat_pay",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-05T08:01:00",
+      "linkTitle": "618 支付抽好礼",
+      "linkDescription": "6 月 1-18 日，使用微信支付满 3 笔可抽红包",
+      "linkImageUrl": "assets/images/avatars/avatar_3.png",
+      "linkUrl": "https://example.com/wxpay-618"
+    },
+    {
+      "id": "m_wp_14",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T08:02:00",
+      "text": "点链接立即参与"
+    },
+    {
+      "id": "m_wp_15",
+      "chatId": "chat_wechat_pay",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T08:03:00",
+      "text": "祝您好运！"
+    }
+  ]
+}

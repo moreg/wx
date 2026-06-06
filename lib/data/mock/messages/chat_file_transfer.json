@@ -1,0 +1,152 @@
+{
+  "messages": [
+    {
+      "id": "t_ft_1",
+      "chatId": "chat_file_transfer",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T16:00:00"
+    },
+    {
+      "id": "m_ft_1",
+      "chatId": "chat_file_transfer",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-04T16:00:00",
+      "text": "已与电脑版微信建立连接"
+    },
+    {
+      "id": "m_ft_2",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-04T16:05:00",
+      "fileName": "Q2 报表.pdf",
+      "fileSize": "1.2 MB"
+    },
+    {
+      "id": "m_ft_3",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T16:10:00",
+      "text": "已接收 1 个文件"
+    },
+    {
+      "id": "m_ft_4",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-04T16:20:00",
+      "fileName": "截图.png",
+      "fileSize": "248 KB"
+    },
+    {
+      "id": "t_ft_2",
+      "chatId": "chat_file_transfer",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T17:00:00"
+    },
+    {
+      "id": "m_ft_5",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T17:00:30",
+      "text": "共接收 2 个文件"
+    },
+    {
+      "id": "m_ft_6",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-04T18:15:00",
+      "fileName": "周报模板.docx",
+      "fileSize": "84 KB"
+    },
+    {
+      "id": "m_ft_7",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T18:20:00",
+      "text": "已接收 1 个文件"
+    },
+    {
+      "id": "t_ft_3",
+      "chatId": "chat_file_transfer",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T09:30:00"
+    },
+    {
+      "id": "m_ft_8",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-05T09:30:30",
+      "fileName": "会议纪要.md",
+      "fileSize": "12 KB"
+    },
+    {
+      "id": "m_ft_9",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T09:32:00",
+      "text": "已接收 1 个文件"
+    },
+    {
+      "id": "m_ft_10",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-05T11:00:00",
+      "fileName": "设计图稿_v2.fig",
+      "fileSize": "5.6 MB"
+    },
+    {
+      "id": "m_ft_11",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T11:05:00",
+      "text": "已接收 1 个文件"
+    },
+    {
+      "id": "m_ft_12",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-05T14:00:00",
+      "fileName": "数据库备份.sql",
+      "fileSize": "12.4 MB"
+    },
+    {
+      "id": "m_ft_13",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T14:10:00",
+      "text": "已接收 1 个文件"
+    },
+    {
+      "id": "m_ft_14",
+      "chatId": "chat_file_transfer",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-05T16:00:00",
+      "fileName": "logo.png",
+      "fileSize": "64 KB"
+    },
+    {
+      "id": "m_ft_15",
+      "chatId": "chat_file_transfer",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T16:05:00",
+      "text": "已接收 1 个文件"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "messages": [
+    {
+      "id": "t_mom_1",
+      "chatId": "chat_mom",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T08:00:00"
+    },
+    {
+      "id": "m_mom_1",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T08:00:00",
+      "text": "起了没？今天气温降了多穿点"
+    },
+    {
+      "id": "m_mom_2",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T08:05:00",
+      "text": "起了，穿了外套"
+    },
+    {
+      "id": "m_mom_3",
+      "chatId": "chat_mom",
+      "type": "image",
+      "direction": "other",
+      "time": "2026-06-03T08:30:00",
+      "imageUrl": "assets/images/avatars/avatar_4.png",
+      "imageWidth": 240,
+      "imageHeight": 320
+    },
+    {
+      "id": "m_mom_4",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T08:30:30",
+      "text": "早上的菜场，西红柿新鲜"
+    },
+    {
+      "id": "m_mom_5",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T08:35:00",
+      "text": "看着不错，今晚回家吃饭"
+    },
+    {
+      "id": "m_mom_6",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T08:36:00",
+      "text": "好，给你做爱吃的"
+    },
+    {
+      "id": "t_mom_2",
+      "chatId": "chat_mom",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T18:00:00"
+    },
+    {
+      "id": "m_mom_7",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T18:00:00",
+      "text": "菜做好了，回来吧"
+    },
+    {
+      "id": "m_mom_8",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T18:10:00",
+      "text": "到楼下了"
+    },
+    {
+      "id": "m_mom_9",
+      "chatId": "chat_mom",
+      "type": "image",
+      "direction": "self",
+      "time": "2026-06-03T19:00:00",
+      "imageUrl": "assets/images/avatars/avatar_2.png",
+      "imageWidth": 320,
+      "imageHeight": 240
+    },
+    {
+      "id": "t_mom_3",
+      "chatId": "chat_mom",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T07:30:00"
+    },
+    {
+      "id": "m_mom_10",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T07:30:00",
+      "text": "早饭吃了没？"
+    },
+    {
+      "id": "m_mom_11",
+      "chatId": "chat_mom",
+      "type": "emoji",
+      "direction": "self",
+      "time": "2026-06-04T07:32:00",
+      "text": "🥣"
+    },
+    {
+      "id": "m_mom_12",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T07:32:30",
+      "text": "正在吃，妈你早"
+    },
+    {
+      "id": "m_mom_13",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T07:35:00",
+      "text": "嗯，记得吃慢点"
+    },
+    {
+      "id": "t_mom_4",
+      "chatId": "chat_mom",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T12:00:00"
+    },
+    {
+      "id": "m_mom_14",
+      "chatId": "chat_mom",
+      "type": "voice",
+      "direction": "other",
+      "time": "2026-06-05T12:00:00",
+      "audioDuration": 45
+    },
+    {
+      "id": "m_mom_15",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T12:05:00",
+      "text": "刚听完"
+    },
+    {
+      "id": "m_mom_16",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T12:05:30",
+      "text": "今天端午回家，几点开饭？"
+    },
+    {
+      "id": "m_mom_17",
+      "chatId": "chat_mom",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T12:07:00",
+      "text": "六点，别迟到"
+    },
+    {
+      "id": "m_mom_18",
+      "chatId": "chat_mom",
+      "type": "voice",
+      "direction": "other",
+      "time": "2026-06-05T12:08:00",
+      "audioDuration": 83
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "messages": [
+    {
+      "id": "t_ld_1",
+      "chatId": "chat_landlord",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-25T10:00:00"
+    },
+    {
+      "id": "m_ld_1",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-25T10:00:00",
+      "text": "你好，6 月房租到期了，记得续"
+    },
+    {
+      "id": "m_ld_2",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-05-25T11:00:00",
+      "text": "好的张叔，6 月 1 号转给您"
+    },
+    {
+      "id": "t_ld_2",
+      "chatId": "chat_landlord",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-01T10:00:00"
+    },
+    {
+      "id": "m_ld_3",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-01T10:00:00",
+      "text": "张叔，6 月房租转您了"
+    },
+    {
+      "id": "m_ld_4",
+      "chatId": "chat_landlord",
+      "type": "transfer",
+      "direction": "self",
+      "time": "2026-06-01T10:01:00",
+      "transferAmount": 3500.0,
+      "transferTitle": "6 月房租",
+      "transferStatus": "已收款"
+    },
+    {
+      "id": "m_ld_5",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T18:00:00",
+      "text": "房租收到了，6 月合同记得续"
+    },
+    {
+      "id": "m_ld_6",
+      "chatId": "chat_landlord",
+      "type": "location",
+      "direction": "other",
+      "time": "2026-06-01T18:01:00",
+      "locationName": "金汇花园 6 号楼",
+      "locationAddress": "上海市浦东新区张江高科路 998 弄"
+    },
+    {
+      "id": "m_ld_7",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T18:02:00",
+      "text": "续签合同我放物业了，你下班顺路来拿"
+    },
+    {
+      "id": "m_ld_8",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-01T18:05:00",
+      "text": "好的，谢谢张叔"
+    },
+    {
+      "id": "t_ld_3",
+      "chatId": "chat_landlord",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T08:30:00"
+    },
+    {
+      "id": "m_ld_9",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-02T08:30:00",
+      "text": "张叔，昨天合同已经拿到了"
+    },
+    {
+      "id": "m_ld_10",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T09:00:00",
+      "text": "好，签完放回物业就行"
+    },
+    {
+      "id": "m_ld_11",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T09:01:00",
+      "text": "另外 7 月起房租不变，水电按表"
+    },
+    {
+      "id": "t_ld_4",
+      "chatId": "chat_landlord",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T10:00:00"
+    },
+    {
+      "id": "m_ld_12",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T10:00:00",
+      "text": "张叔，空调不太冷，能找人看看吗？"
+    },
+    {
+      "id": "m_ld_13",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T11:00:00",
+      "text": "我让小王周六下午来看"
+    },
+    {
+      "id": "m_ld_14",
+      "chatId": "chat_landlord",
+      "type": "location",
+      "direction": "other",
+      "time": "2026-06-04T11:01:00",
+      "locationName": "金汇花园物业服务中心",
+      "locationAddress": "上海市浦东新区张江高科路 998 弄 1 号楼 101"
+    },
+    {
+      "id": "m_ld_15",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T11:02:00",
+      "text": "周六方便不？"
+    },
+    {
+      "id": "m_ld_16",
+      "chatId": "chat_landlord",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T11:05:00",
+      "text": "可以，下午 3 点之后都行"
+    }
+  ]
+}

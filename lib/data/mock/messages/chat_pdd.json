@@ -1,0 +1,184 @@
+{
+  "messages": [
+    {
+      "id": "t_pdd_1",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-30T08:00:00"
+    },
+    {
+      "id": "m_pdd_1",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-30T08:00:00",
+      "text": "618 大促预热开启！"
+    },
+    {
+      "id": "m_pdd_2",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-05-30T08:01:00",
+      "linkTitle": "百亿补贴，全网最低价",
+      "linkDescription": "iPhone 15 直降 1500 元",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-sale"
+    },
+    {
+      "id": "t_pdd_2",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T09:15:00"
+    },
+    {
+      "id": "m_pdd_3",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T09:15:00",
+      "text": "今日特惠"
+    },
+    {
+      "id": "m_pdd_4",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-02T09:16:00",
+      "linkTitle": "0 元抢！618 大促限时活动",
+      "linkDescription": "每天 10 点开抢，仅限 100 名",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-grab"
+    },
+    {
+      "id": "t_pdd_3",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T12:00:00"
+    },
+    {
+      "id": "m_pdd_5",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T12:00:00",
+      "text": "百亿补贴加场！iPhone 15 Pro 限时直降 ¥1800"
+    },
+    {
+      "id": "m_pdd_6",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-02T12:01:00",
+      "linkTitle": "iPhone 15 Pro 全网最低",
+      "linkDescription": "官方补贴 + 平台百亿补贴",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-iphone"
+    },
+    {
+      "id": "t_pdd_4",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T10:30:00"
+    },
+    {
+      "id": "m_pdd_7",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T10:30:00",
+      "text": "你关注的商品降价啦"
+    },
+    {
+      "id": "m_pdd_8",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-03T10:30:30",
+      "linkTitle": "智能手表 限时 ¥299",
+      "linkDescription": "原价 ¥899，限时直降",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-watch"
+    },
+    {
+      "id": "m_pdd_9",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T10:31:00",
+      "text": "点链接立即抢购"
+    },
+    {
+      "id": "t_pdd_5",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T08:00:00"
+    },
+    {
+      "id": "m_pdd_10",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T08:00:00",
+      "text": "早安！新一天的好货推荐"
+    },
+    {
+      "id": "m_pdd_11",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-04T08:00:30",
+      "linkTitle": "9.9 包邮专区",
+      "linkDescription": "天天 9.9，工厂直发",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-99"
+    },
+    {
+      "id": "m_pdd_12",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T08:01:00",
+      "text": "新人还有额外 5 元无门槛券"
+    },
+    {
+      "id": "t_pdd_6",
+      "chatId": "chat_pdd",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T11:00:00"
+    },
+    {
+      "id": "m_pdd_13",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T11:00:00",
+      "text": "618 主会场倒计时 2 天"
+    },
+    {
+      "id": "m_pdd_14",
+      "chatId": "chat_pdd",
+      "type": "link",
+      "direction": "other",
+      "time": "2026-06-05T11:01:00",
+      "linkTitle": "618 主会场",
+      "linkDescription": "全品类满 300 减 50",
+      "linkImageUrl": "assets/images/avatars/avatar_5.png",
+      "linkUrl": "https://example.com/pdd-618"
+    },
+    {
+      "id": "m_pdd_15",
+      "chatId": "chat_pdd",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T11:02:00",
+      "text": "错过等一年！"
+    }
+  ]
+}

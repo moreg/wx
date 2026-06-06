@@ -1,0 +1,163 @@
+{
+  "messages": [
+    {
+      "id": "t_gym_1",
+      "chatId": "chat_gym_buddy",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-01T07:00:00"
+    },
+    {
+      "id": "m_gym_1",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T07:00:00",
+      "text": "今早跑了吗？"
+    },
+    {
+      "id": "m_gym_2",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-01T07:05:00",
+      "text": "跑了 5 公里，状态一般"
+    },
+    {
+      "id": "m_gym_3",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-01T07:10:00",
+      "text": "厉害了，我腰伤还没好"
+    },
+    {
+      "id": "t_gym_2",
+      "chatId": "chat_gym_buddy",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T19:00:00"
+    },
+    {
+      "id": "m_gym_4",
+      "chatId": "chat_gym_buddy",
+      "type": "image",
+      "direction": "other",
+      "time": "2026-06-02T19:00:00",
+      "imageUrl": "assets/images/avatars/avatar_1.png",
+      "imageWidth": 320,
+      "imageHeight": 240
+    },
+    {
+      "id": "m_gym_5",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T19:00:30",
+      "text": "今天练背，看这泵感"
+    },
+    {
+      "id": "m_gym_6",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-02T19:05:00",
+      "text": "牛，明天我也去"
+    },
+    {
+      "id": "t_gym_3",
+      "chatId": "chat_gym_buddy",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-03T18:00:00"
+    },
+    {
+      "id": "m_gym_7",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T18:00:00",
+      "text": "今天练啥？"
+    },
+    {
+      "id": "m_gym_8",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-03T18:02:00",
+      "text": "胸肌"
+    },
+    {
+      "id": "m_gym_9",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-03T18:05:00",
+      "text": "好，我练肩"
+    },
+    {
+      "id": "t_gym_4",
+      "chatId": "chat_gym_buddy",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T22:30:00"
+    },
+    {
+      "id": "m_gym_10",
+      "chatId": "chat_gym_buddy",
+      "type": "system",
+      "direction": "system",
+      "time": "2026-06-04T22:30:00",
+      "text": "你撤回了一条消息"
+    },
+    {
+      "id": "m_gym_11",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T22:30:30",
+      "text": "明早 6 点老地方见？"
+    },
+    {
+      "id": "m_gym_12",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T22:32:00",
+      "text": "行"
+    },
+    {
+      "id": "t_gym_5",
+      "chatId": "chat_gym_buddy",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T06:30:00"
+    },
+    {
+      "id": "m_gym_13",
+      "chatId": "chat_gym_buddy",
+      "type": "image",
+      "direction": "other",
+      "time": "2026-06-05T06:30:30",
+      "imageUrl": "assets/images/avatars/avatar_2.png",
+      "imageWidth": 320,
+      "imageHeight": 240
+    },
+    {
+      "id": "m_gym_14",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-05T06:31:00",
+      "text": "今天的晨练打卡"
+    },
+    {
+      "id": "m_gym_15",
+      "chatId": "chat_gym_buddy",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T06:35:00",
+      "text": "到楼下了"
+    }
+  ]
+}

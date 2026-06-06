@@ -1,0 +1,276 @@
+{
+  "version": 1,
+  "description": "30 mock 联系人，按拼音/英文字母首字母排序，混合字母 + 中文。无数字联系人（# 段未启用）。",
+  "contacts": [
+    {
+      "id": "c001",
+      "name": "阿杰",
+      "pinyin": "ajie",
+      "sortKey": "A",
+      "avatar": "assets/images/avatars/avatar_2.png",
+      "signature": "代码就是诗",
+      "region": "上海"
+    },
+    {
+      "id": "c002",
+      "name": "Anna",
+      "pinyin": "anna",
+      "sortKey": "A",
+      "avatar": "assets/images/avatars/avatar_6.png",
+      "signature": "Love music, love life.",
+      "region": "Beijing"
+    },
+    {
+      "id": "c003",
+      "name": "Bob",
+      "pinyin": "bob",
+      "sortKey": "B",
+      "avatar": "assets/images/avatars/avatar_7.png",
+      "signature": "Stay hungry, stay foolish.",
+      "region": "Shenzhen"
+    },
+    {
+      "id": "c004",
+      "name": "Catherine",
+      "pinyin": "catherine",
+      "sortKey": "C",
+      "avatar": "assets/images/avatars/avatar_4.png",
+      "signature": "Designer @ Acme",
+      "region": "Hangzhou"
+    },
+    {
+      "id": "c005",
+      "name": "Chris",
+      "pinyin": "chris",
+      "sortKey": "C",
+      "avatar": "assets/images/avatars/avatar_5.png",
+      "signature": "PM at Foo Inc.",
+      "region": "广州"
+    },
+    {
+      "id": "c006",
+      "name": "Daniel",
+      "pinyin": "daniel",
+      "sortKey": "D",
+      "avatar": "assets/images/avatars/avatar_1.png",
+      "signature": "iOS developer",
+      "region": "Beijing"
+    },
+    {
+      "id": "c007",
+      "name": "David",
+      "pinyin": "david",
+      "sortKey": "D",
+      "avatar": "assets/images/avatars/avatar_8.png",
+      "signature": "Director of Engineering",
+      "region": "深圳"
+    },
+    {
+      "id": "c008",
+      "name": "Emma",
+      "pinyin": "emma",
+      "sortKey": "E",
+      "avatar": "assets/images/avatars/avatar_3.png",
+      "signature": "Marketing & PR",
+      "region": "上海"
+    },
+    {
+      "id": "c009",
+      "name": "Frank",
+      "pinyin": "frank",
+      "sortKey": "F",
+      "avatar": "assets/images/avatars/avatar_9.png",
+      "signature": "Tech lead",
+      "region": "成都"
+    },
+    {
+      "id": "c010",
+      "name": "George",
+      "pinyin": "george",
+      "sortKey": "G",
+      "avatar": "assets/images/avatars/avatar_5.png",
+      "signature": "GG",
+      "region": "Beijing"
+    },
+    {
+      "id": "c011",
+      "name": "Grace",
+      "pinyin": "grace",
+      "sortKey": "G",
+      "avatar": "assets/images/avatars/avatar_1.png",
+      "signature": "HR Manager",
+      "region": "上海"
+    },
+    {
+      "id": "c012",
+      "name": "Henry",
+      "pinyin": "henry",
+      "sortKey": "H",
+      "avatar": "assets/images/avatars/avatar_10.png",
+      "signature": "Investor & Advisor",
+      "region": "Hong Kong"
+    },
+    {
+      "id": "c013",
+      "name": "Helen",
+      "pinyin": "helen",
+      "sortKey": "H",
+      "avatar": "assets/images/avatars/avatar_2.png",
+      "signature": "安静看书",
+      "region": "杭州"
+    },
+    {
+      "id": "c014",
+      "name": "Jack",
+      "pinyin": "jack",
+      "sortKey": "J",
+      "avatar": "assets/images/avatars/avatar_4.png",
+      "signature": "健身 / 跑步 / 摄影",
+      "region": "北京"
+    },
+    {
+      "id": "c015",
+      "name": "James",
+      "pinyin": "james",
+      "sortKey": "J",
+      "avatar": "assets/images/avatars/avatar_5.png",
+      "signature": "Sales Director",
+      "region": "广州"
+    },
+    {
+      "id": "c016",
+      "name": "Lily",
+      "pinyin": "lily",
+      "sortKey": "L",
+      "avatar": "assets/images/avatars/avatar_6.png",
+      "signature": "Cafe hop ☕",
+      "region": "Shanghai"
+    },
+    {
+      "id": "c017",
+      "name": "李四",
+      "pinyin": "lisi",
+      "sortKey": "L",
+      "avatar": "assets/images/avatars/avatar_2.png",
+      "signature": "做点有趣的事",
+      "region": "深圳"
+    },
+    {
+      "id": "c018",
+      "name": "Michael",
+      "pinyin": "michael",
+      "sortKey": "M",
+      "avatar": "assets/images/avatars/avatar_8.png",
+      "signature": "Mobile architect",
+      "region": "Hangzhou"
+    },
+    {
+      "id": "c019",
+      "name": "Mary",
+      "pinyin": "mary",
+      "sortKey": "M",
+      "avatar": "assets/images/avatars/avatar_3.png",
+      "signature": "Product Manager",
+      "region": "上海"
+    },
+    {
+      "id": "c020",
+      "name": "Peter",
+      "pinyin": "peter",
+      "sortKey": "P",
+      "avatar": "assets/images/avatars/avatar_7.png",
+      "signature": "Just do it.",
+      "region": "深圳"
+    },
+    {
+      "id": "c021",
+      "name": "Robert",
+      "pinyin": "robert",
+      "sortKey": "R",
+      "avatar": "assets/images/avatars/avatar_1.png",
+      "signature": "Entrepreneur",
+      "region": "Beijing"
+    },
+    {
+      "id": "c022",
+      "name": "Rose",
+      "pinyin": "rose",
+      "sortKey": "R",
+      "avatar": "assets/images/avatars/avatar_9.png",
+      "signature": "数据分析师",
+      "region": "成都"
+    },
+    {
+      "id": "c023",
+      "name": "Steve",
+      "pinyin": "steve",
+      "sortKey": "S",
+      "avatar": "assets/images/avatars/avatar_2.png",
+      "signature": "Coach",
+      "region": "Beijing"
+    },
+    {
+      "id": "c024",
+      "name": "Sarah",
+      "pinyin": "sarah",
+      "sortKey": "S",
+      "avatar": "assets/images/avatars/avatar_4.png",
+      "signature": "Writer & Editor",
+      "region": "上海"
+    },
+    {
+      "id": "c025",
+      "name": "Tom",
+      "pinyin": "tom",
+      "sortKey": "T",
+      "avatar": "assets/images/avatars/avatar_8.png",
+      "signature": "DevOps",
+      "region": "Hangzhou"
+    },
+    {
+      "id": "c026",
+      "name": "Tina",
+      "pinyin": "tina",
+      "sortKey": "T",
+      "avatar": "assets/images/avatars/avatar_10.png",
+      "signature": "User Researcher",
+      "region": "北京"
+    },
+    {
+      "id": "c027",
+      "name": "William",
+      "pinyin": "william",
+      "sortKey": "W",
+      "avatar": "assets/images/avatars/avatar_2.png",
+      "signature": "CFO",
+      "region": "Hong Kong"
+    },
+    {
+      "id": "c028",
+      "name": "王五",
+      "pinyin": "wangwu",
+      "sortKey": "W",
+      "avatar": "assets/images/avatars/avatar_3.png",
+      "signature": "做完再说",
+      "region": "北京"
+    },
+    {
+      "id": "c029",
+      "name": "Zoe",
+      "pinyin": "zoe",
+      "sortKey": "Z",
+      "avatar": "assets/images/avatars/avatar_6.png",
+      "signature": "🤘 Rock on",
+      "region": "深圳"
+    },
+    {
+      "id": "c030",
+      "name": "张三",
+      "pinyin": "zhangsan",
+      "sortKey": "Z",
+      "avatar": "assets/images/avatars/avatar_4.png",
+      "signature": "Eat sleep code repeat",
+      "region": "杭州"
+    }
+  ]
+}

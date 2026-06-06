@@ -1,0 +1,272 @@
+{
+  "messages": [
+    {
+      "id": "t_family_1",
+      "chatId": "chat_family",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T11:45:00"
+    },
+    {
+      "id": "m_family_1",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T11:45:30",
+      "text": "中午了，吃饭了没？"
+    },
+    {
+      "id": "m_family_2",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T11:46:00",
+      "text": "刚吃完，公司食堂"
+    },
+    {
+      "id": "m_family_3",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dad",
+      "senderName": "老爸",
+      "time": "2026-06-05T11:48:00",
+      "text": "今天端午节，回家不？"
+    },
+    {
+      "id": "m_family_4",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T11:49:00",
+      "text": "回，下午就出发"
+    },
+    {
+      "id": "m_family_5",
+      "chatId": "chat_family",
+      "type": "image",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T11:50:00",
+      "imageUrl": "assets/images/avatars/avatar_1.png",
+      "imageWidth": 240,
+      "imageHeight": 320
+    },
+    {
+      "id": "m_family_6",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T11:50:30",
+      "text": "包了你爱吃的肉粽"
+    },
+    {
+      "id": "m_family_7",
+      "chatId": "chat_family",
+      "type": "emoji",
+      "direction": "self",
+      "time": "2026-06-05T11:51:00",
+      "text": "👍"
+    },
+    {
+      "id": "t_family_2",
+      "chatId": "chat_family",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T14:30:00"
+    },
+    {
+      "id": "m_family_8",
+      "chatId": "chat_family",
+      "type": "voice",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T14:30:30",
+      "audioDuration": 38
+    },
+    {
+      "id": "m_family_9",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_sister",
+      "senderName": "小妹",
+      "time": "2026-06-05T15:02:00",
+      "text": "哥我晚上也回来，给妈带个西瓜"
+    },
+    {
+      "id": "m_family_10",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T15:05:00",
+      "text": "行，咱俩路上拼个车"
+    },
+    {
+      "id": "m_family_11",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T15:06:00",
+      "text": "路上慢点开"
+    },
+    {
+      "id": "m_family_12",
+      "chatId": "chat_family",
+      "type": "redPacket",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T15:07:00",
+      "redPacketTitle": "端午安康",
+      "redPacketAmount": 88.0,
+      "redPacketStatus": "已领取"
+    },
+    {
+      "id": "m_family_13",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_sister",
+      "senderName": "小妹",
+      "time": "2026-06-05T15:07:30",
+      "text": "谢谢老妈！"
+    },
+    {
+      "id": "m_family_14",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T15:08:00",
+      "text": "谢老妈，端午安康！"
+    },
+    {
+      "id": "t_family_3",
+      "chatId": "chat_family",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T18:30:00"
+    },
+    {
+      "id": "m_family_15",
+      "chatId": "chat_family",
+      "type": "image",
+      "direction": "self",
+      "time": "2026-06-05T18:30:30",
+      "imageUrl": "assets/images/avatars/avatar_3.png",
+      "imageWidth": 240,
+      "imageHeight": 180
+    },
+    {
+      "id": "m_family_16",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T18:31:00",
+      "text": "到楼下了"
+    },
+    {
+      "id": "m_family_17",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T18:32:00",
+      "text": "上来吧，门开着"
+    },
+    {
+      "id": "m_family_18",
+      "chatId": "chat_family",
+      "type": "voice",
+      "direction": "other",
+      "senderId": "wxid_dad",
+      "senderName": "老爸",
+      "time": "2026-06-05T18:33:00",
+      "audioDuration": 12
+    },
+    {
+      "id": "t_family_4",
+      "chatId": "chat_family",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-05T19:30:00"
+    },
+    {
+      "id": "m_family_19",
+      "chatId": "chat_family",
+      "type": "image",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T19:30:30",
+      "imageUrl": "assets/images/avatars/avatar_2.png",
+      "imageWidth": 240,
+      "imageHeight": 240
+    },
+    {
+      "id": "m_family_20",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T19:31:00",
+      "text": "看，饺子刚出锅"
+    },
+    {
+      "id": "m_family_21",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T19:32:00",
+      "text": "流口水了"
+    },
+    {
+      "id": "m_family_22",
+      "chatId": "chat_family",
+      "type": "emoji",
+      "direction": "other",
+      "senderId": "wxid_sister",
+      "senderName": "小妹",
+      "time": "2026-06-05T19:33:00",
+      "text": "🤤"
+    },
+    {
+      "id": "m_family_23",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_dad",
+      "senderName": "老爸",
+      "time": "2026-06-05T19:38:00",
+      "text": "快上来吧，凉了就不好吃了"
+    },
+    {
+      "id": "m_family_24",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-05T19:40:00",
+      "text": "到楼下了"
+    },
+    {
+      "id": "m_family_25",
+      "chatId": "chat_family",
+      "type": "text",
+      "direction": "other",
+      "senderId": "wxid_mom",
+      "senderName": "老妈",
+      "time": "2026-06-05T19:42:00",
+      "text": "今晚吃饺子，记得回来"
+    }
+  ]
+}

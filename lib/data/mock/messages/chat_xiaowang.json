@@ -1,0 +1,155 @@
+{
+  "messages": [
+    {
+      "id": "t_xw_1",
+      "chatId": "chat_xiaowang",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-30T10:00:00"
+    },
+    {
+      "id": "m_xw_1",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-30T10:00:00",
+      "text": "下个迭代的需求文档你看下"
+    },
+    {
+      "id": "m_xw_2",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-05-30T10:10:00",
+      "text": "好的，我看看"
+    },
+    {
+      "id": "m_xw_3",
+      "chatId": "chat_xiaowang",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-05-30T10:15:00",
+      "fileName": "需求文档.docx",
+      "fileSize": "256 KB"
+    },
+    {
+      "id": "t_xw_2",
+      "chatId": "chat_xiaowang",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-05-31T14:00:00"
+    },
+    {
+      "id": "m_xw_4",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-05-31T14:00:00",
+      "text": "看完了，第三点有点歧义"
+    },
+    {
+      "id": "m_xw_5",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-31T14:05:00",
+      "text": "哪里歧义？我改"
+    },
+    {
+      "id": "m_xw_6",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-05-31T14:10:00",
+      "text": "导出文件名的格式"
+    },
+    {
+      "id": "m_xw_7",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-05-31T14:15:00",
+      "text": "哦，是 '微信账单_yyyy-MM-dd.csv'，我加到文档里"
+    },
+    {
+      "id": "t_xw_3",
+      "chatId": "chat_xiaowang",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-02T14:30:00"
+    },
+    {
+      "id": "m_xw_8",
+      "chatId": "chat_xiaowang",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-02T14:30:00",
+      "fileName": "需求文档.docx",
+      "fileSize": "260 KB"
+    },
+    {
+      "id": "m_xw_9",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-02T14:30:30",
+      "text": "改好了，再看下"
+    },
+    {
+      "id": "m_xw_10",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-02T14:35:00",
+      "text": "OK 这版没问题"
+    },
+    {
+      "id": "t_xw_4",
+      "chatId": "chat_xiaowang",
+      "type": "time",
+      "direction": "system",
+      "time": "2026-06-04T10:00:00"
+    },
+    {
+      "id": "m_xw_11",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T10:00:00",
+      "text": "今天 UAT 走完一遍了"
+    },
+    {
+      "id": "m_xw_12",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T10:05:00",
+      "text": "辛苦，有问题反馈了没？"
+    },
+    {
+      "id": "m_xw_13",
+      "chatId": "chat_xiaowang",
+      "type": "file",
+      "direction": "other",
+      "time": "2026-06-04T10:10:00",
+      "fileName": "UAT_报告.xlsx",
+      "fileSize": "180 KB"
+    },
+    {
+      "id": "m_xw_14",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "other",
+      "time": "2026-06-04T10:10:30",
+      "text": "几个小问题，详见附件"
+    },
+    {
+      "id": "m_xw_15",
+      "chatId": "chat_xiaowang",
+      "type": "text",
+      "direction": "self",
+      "time": "2026-06-04T10:15:00",
+      "text": "收到，下午我看下"
+    }
+  ]
+}
