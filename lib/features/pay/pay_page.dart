@@ -9,11 +9,11 @@ class PayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEDEDED),
+      backgroundColor: WxColors.bg,
       appBar: AppBar(
         title: const Text('服务', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18)),
         centerTitle: true,
-        backgroundColor: const Color(0xFFEDEDED),
+        backgroundColor: WxColors.bg,
         elevation: 0,
         actions: const <Widget>[
           Padding(
@@ -30,40 +30,40 @@ class PayPage extends StatelessWidget {
           _ServiceGroup(
             title: '金融理财',
             items: [
-              _PayItem(icon: Icons.credit_card, label: '信用卡还款', color: Color(0xFF07C160)),
-              _PayItem(icon: Icons.savings_outlined, label: '理财通', color: Color(0xFF10AEFF)),
-              _PayItem(icon: Icons.health_and_safety_outlined, label: '保险服务', color: Color(0xFFFA9D3B)),
+              _PayItem(icon: Icons.credit_card, label: '信用卡还款', color: WxColors.green),
+              _PayItem(icon: Icons.savings_outlined, label: '理财通', color: WxColors.payBlue),
+              _PayItem(icon: Icons.health_and_safety_outlined, label: '保险服务', color: WxColors.payOrange),
             ],
           ),
           SizedBox(height: 12),
           _ServiceGroup(
             title: '生活服务',
             items: [
-              _PayItem(icon: Icons.phone_android, label: '手机充值', color: Color(0xFF10AEFF)),
-              _PayItem(icon: Icons.water_drop_outlined, label: '生活缴费', color: Color(0xFF07C160)),
-              _PayItem(icon: Icons.monetization_on_outlined, label: 'Q币充值', color: Color(0xFF10AEFF)),
-              _PayItem(icon: Icons.location_city_outlined, label: '城市服务', color: Color(0xFF07C160)),
-              _PayItem(icon: Icons.volunteer_activism_outlined, label: '腾讯公益', color: Color(0xFFFA5151)),
-              _PayItem(icon: Icons.medical_services_outlined, label: '医疗健康', color: Color(0xFFFA9D3B)),
+              _PayItem(icon: Icons.phone_android, label: '手机充值', color: WxColors.payBlue),
+              _PayItem(icon: Icons.water_drop_outlined, label: '生活缴费', color: WxColors.green),
+              _PayItem(icon: Icons.monetization_on_outlined, label: 'Q币充值', color: WxColors.payBlue),
+              _PayItem(icon: Icons.location_city_outlined, label: '城市服务', color: WxColors.green),
+              _PayItem(icon: Icons.volunteer_activism_outlined, label: '腾讯公益', color: WxColors.payRed),
+              _PayItem(icon: Icons.medical_services_outlined, label: '医疗健康', color: WxColors.payOrange),
             ],
           ),
           SizedBox(height: 12),
           _ServiceGroup(
             title: '交通出行',
             items: [
-              _PayItem(icon: Icons.directions_bus_outlined, label: '出行服务', color: Color(0xFF10AEFF)),
-              _PayItem(icon: Icons.flight_takeoff, label: '火车票机票', color: Color(0xFF07C160)),
-              _PayItem(icon: Icons.local_taxi_outlined, label: '滴滴出行', color: Color(0xFFFA9D3B)),
-              _PayItem(icon: Icons.hotel_outlined, label: '酒店民宿', color: Color(0xFF07C160)),
+              _PayItem(icon: Icons.directions_bus_outlined, label: '出行服务', color: WxColors.payBlue),
+              _PayItem(icon: Icons.flight_takeoff, label: '火车票机票', color: WxColors.green),
+              _PayItem(icon: Icons.local_taxi_outlined, label: '滴滴出行', color: WxColors.payOrange),
+              _PayItem(icon: Icons.hotel_outlined, label: '酒店民宿', color: WxColors.green),
             ],
           ),
           SizedBox(height: 12),
           _ServiceGroup(
             title: '购物消费',
             items: [
-              _PayItem(icon: Icons.shopping_bag_outlined, label: '京东购物', color: Color(0xFFFA5151)),
-              _PayItem(icon: Icons.fastfood_outlined, label: '美团外卖', color: Color(0xFFFA9D3B)),
-              _PayItem(icon: Icons.movie_outlined, label: '电影演出', color: Color(0xFFFA5151)),
+              _PayItem(icon: Icons.shopping_bag_outlined, label: '京东购物', color: WxColors.payRed),
+              _PayItem(icon: Icons.fastfood_outlined, label: '美团外卖', color: WxColors.payOrange),
+              _PayItem(icon: Icons.movie_outlined, label: '电影演出', color: WxColors.payRed),
             ],
           ),
           SizedBox(height: WxSpace.huge),
@@ -91,7 +91,7 @@ class _TopGreenCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF27A75E), // A slightly softer green than primary
+        color: WxColors.payGreen,
         borderRadius: BorderRadius.circular(12),
       ),
       child: IntrinsicHeight(

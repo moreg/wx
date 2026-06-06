@@ -14,6 +14,14 @@ class MePage extends StatefulWidget {
 }
 
 class _MePageState extends State<MePage> {
+  late Future<LoginAccount?> _accountFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _accountFuture = _loadCurrentAccount();
+  }
+
   Future<LoginAccount?> _loadCurrentAccount() async {
     final auth = await AuthState.create();
     return auth.currentAccount;
@@ -22,7 +30,7 @@ class _MePageState extends State<MePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEDEDED),
+      backgroundColor: WxColors.bg,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -31,11 +39,11 @@ class _MePageState extends State<MePage> {
       body: ListView(
         padding: const EdgeInsets.only(bottom: WxSpace.huge),
         children: <Widget>[
-          _ProfileHeader(loader: _loadCurrentAccount),
+          _ProfileHeader(accountFuture: _accountFuture),
           const SizedBox(height: 8),
           _ListItem(
             icon: 'assets/icons/wechat.svg',
-            iconColor: const Color(0xFF07C160),
+            iconColor: WxColors.green,
             label: '服务',
             showArrow: true,
             onTap: () => context.push('/pay'),
@@ -50,14 +58,14 @@ class _MePageState extends State<MePage> {
           const _ListDivider(),
           const _ListItem(
             icon: 'assets/icons/album-outlined.svg',
-            iconColor: Color(0xFF576B95),
+            iconColor: WxColors.linkBlue,
             label: '朋友圈',
             showArrow: true,
           ),
           const _ListDivider(),
           _ListItem(
             icon: 'assets/icons/cards.svg',
-            iconColor: const Color(0xFF576B95),
+            iconColor: WxColors.linkBlue,
             label: '作品',
             showArrow: true,
             trailingWidget: Row(
@@ -79,14 +87,14 @@ class _MePageState extends State<MePage> {
           const _ListDivider(),
           const _ListItem(
             icon: 'assets/icons/sticker-outlined.svg',
-            iconColor: Color(0xFFFA9D3B),
+            iconColor: WxColors.warning,
             label: '表情',
             showArrow: true,
           ),
           const SizedBox(height: 8),
           _ListItem(
             icon: 'assets/icons/setting-outlined.svg',
-            iconColor: const Color(0xFF576B95),
+            iconColor: WxColors.linkBlue,
             label: '设置',
             showArrow: true,
             onTap: () => context.push('/settings'),
@@ -102,13 +110,13 @@ class _MePageState extends State<MePage> {
 // =====================================================================
 
 class _ProfileHeader extends StatelessWidget {
-  final Future<LoginAccount?> Function() loader;
-  const _ProfileHeader({required this.loader});
+  final Future<LoginAccount?> accountFuture;
+  const _ProfileHeader({required this.accountFuture});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: WxColors.card,
       padding: const EdgeInsets.only(
         left: 20,
         right: 16,
@@ -116,7 +124,7 @@ class _ProfileHeader extends StatelessWidget {
         bottom: 36,
       ),
       child: FutureBuilder<LoginAccount?>(
-        future: loader(),
+        future: accountFuture,
         builder: (context, snap) {
           final account = snap.data;
           return Row(

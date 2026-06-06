@@ -40,6 +40,12 @@ class WxColors {
   static const Color warning = Color(0xFFFA9D3B);
   static const Color unread = Color(0xFFFA5151); // 未读红点
 
+  // 服务/支付特有颜色
+  static const Color payGreen = Color(0xFF27A75E); // 顶部分屏绿
+  static const Color payBlue = Color(0xFF10AEFF);
+  static const Color payOrange = Color(0xFFFA9D3B);
+  static const Color payRed = Color(0xFFFA5151);
+
   // 启动页
   static const Color splashBg = Color(0xFFFFFFFF);
   static const Color splashText = Color(0xFF181818);
