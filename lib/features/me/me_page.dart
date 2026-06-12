@@ -1,4 +1,14 @@
+// "我" 页面 — 1:1 复刻微信 iOS 移动端
+//
+// 视觉规范（与图片严格一致）：
+//   - 头部白底：左 64dp 方形头像（4px 圆角），右昵称 + 微信号行 + 状态/更多按钮
+//   - 列表：浅灰 #EDEDED 背景上的白色卡片，条高 56dp，左 28dp 图标 / 16dp 间距 / 文字
+//   - 分割：同组内 0.5dp 浅灰细分隔线（缩进 64dp），跨组 8dp 灰色色块
+//   - 右侧：文字 + 红色小圆点 + 12dp 灰箭头
+//
+// 颜色 / 间距 token 见 [WxColors] / [WxSpace] / [WxRadius] / [WxFontSize]。
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -31,88 +41,94 @@ class _MePageState extends State<MePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: WxColors.bg,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        toolbarHeight: 0,
-      ),
-      body: ListView(
-        padding: const EdgeInsets.only(bottom: WxSpace.huge),
-        children: <Widget>[
-          _ProfileHeader(accountFuture: _accountFuture),
-          const SizedBox(height: 8),
-          _ListItem(
-            icon: 'assets/icons/wechat-filled.svg',
-            iconColor: WxColors.green,
-            label: '服务',
-            showArrow: true,
-            onTap: () => context.push('/pay'),
-          ),
-          const SizedBox(height: 8),
-          const _ListItem(
-            icon: 'assets/icons/weui-camera.svg',
-            iconColor: Color(0xFFFA9D3B),
-            label: '视频号',
-            showArrow: true,
-          ),
-          const _ListDivider(),
-          const _ListItem(
-            icon: 'assets/icons/play2-outlined.svg',
-            iconColor: Color(0xFFE64340),
-            label: '直播',
-            showArrow: true,
-          ),
-          const _ListDivider(),
-          const _ListItem(
-            icon: 'assets/icons/pay-vendor.svg',
-            iconColor: Color(0xFFFA9D3B),
-            label: '小店',
-            showArrow: true,
-          ),
-          const SizedBox(height: 8),
-          const _ListItem(
-            icon: 'assets/icons/favorites.svg',
-            iconColor: null, // Colorful intrinsic icon
-            label: '收藏',
-            showArrow: true,
-          ),
-          const _ListDivider(),
-          const _ListItem(
-            icon: 'assets/icons/moment.svg',
-            iconColor: null, // intrinsic colorful icon
-            label: '朋友圈',
-            showArrow: true,
-          ),
-          const _ListDivider(),
-          _ListItem(
-            icon: 'assets/icons/cards.svg',
-            iconColor: WxColors.linkBlue,
-            label: '卡包',
-            showArrow: true,
-          ),
-          const _ListDivider(),
-          const _ListItem(
-            icon: 'assets/icons/sticker-outlined.svg',
-            iconColor: WxColors.warning,
-            label: '表情',
-            showArrow: true,
-          ),
-          const SizedBox(height: 8),
-          _ListItem(
-            icon: 'assets/icons/setting-outlined.svg',
-            iconColor: WxColors.linkBlue,
-            label: '设置',
-            showArrow: true,
-            onTap: () => context.push('/settings'),
-          ),
-        ],
+      // iOS 风格：透明状态栏，亮色图标（在白底上为黑）
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
+        ),
+        child: ListView(
+          padding: const EdgeInsets.only(bottom: WxSpace.huge),
+          children: <Widget>[
+            _ProfileHeader(accountFuture: _accountFuture),
+
+            // 头部与"服务"之间的灰色色块
+            const _GroupGap(),
+
+            // —— 1. 服务（微信官方服务图标：气泡+对勾）——
+            _ListItem(
+              icon: 'assets/icons/fuwu.svg',
+              iconColor: WxColors.green,
+              label: '服务',
+              onTap: () => context.push('/pay'),
+            ),
+
+            const _GroupGap(),
+
+            // —— 2. 收藏 ——
+            const _ListItem(
+              icon: 'assets/icons/favorites.svg',
+              iconColor: null, // 多色内嵌
+              label: '收藏',
+            ),
+            const _ListDivider(),
+            // —— 3. 朋友圈（真版：蓝色相片图标，山+太阳）——
+            const _ListItem(
+              icon: 'assets/icons/picture_regular.svg',
+              iconColor: WxColors.linkBlue,
+              label: '朋友圈',
+            ),
+            const _ListDivider(),
+            // —— 4. 作品（真版：蓝色三层错位叠卡片，带副文本 + 红点）——
+            const _ListItem(
+              icon: 'assets/icons/me-works.svg',
+              iconColor: null, // 多色 SVG，不染色
+              label: '作品',
+              showRedDot: true,
+              trailingText: '添加第1个作品',
+            ),
+            const _ListDivider(),
+            // —— 5. 表情 ——
+            const _ListItem(
+              icon: 'assets/icons/sticker-outlined.svg',
+              iconColor: WxColors.warning,
+              label: '表情',
+            ),
+
+            const _GroupGap(),
+
+            // —— 6. 设置 ——
+            _ListItem(
+              icon: 'assets/icons/setting-outlined.svg',
+              iconColor: WxColors.linkBlue,
+              label: '设置',
+              onTap: () => context.push('/settings'),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
 // =====================================================================
-// 头部：头像 + 昵称 + 微信号 + 二维码
+// 组之间的灰色色块（8dp）
+// =====================================================================
+
+class _GroupGap extends StatelessWidget {
+  const _GroupGap();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: WxSpace.sm, // 8dp
+      color: WxColors.bg,
+    );
+  }
+}
+
+// =====================================================================
+// 头部：头像 + 昵称 + 微信号 + 二维码 + 状态 / 更多
 // =====================================================================
 
 class _ProfileHeader extends StatelessWidget {
@@ -121,134 +137,111 @@ class _ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 顶部留白 = 状态栏安全区 + 16dp 内容间距，
+    // 在刘海/挖孔/标准机型下都不会贴到状态栏
+    final topPadding = MediaQuery.of(context).padding.top + 16;
     return Container(
       color: WxColors.card,
-      padding: const EdgeInsets.only(
-        left: 20,
-        right: 16,
-        top: 24,
-        bottom: 36,
-      ),
+      padding: EdgeInsets.fromLTRB(20, topPadding, 16, 28),
       child: FutureBuilder<LoginAccount?>(
         future: accountFuture,
         builder: (context, snap) {
           final account = snap.data;
-          return Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(WxRadius.md),
-                child: account == null
-                    ? const _AvatarFallback(size: 72, letter: '微')
-                    : Image.asset(
-                        account.avatar,
-                        width: 64,
-                        height: 64,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => _AvatarFallback(
-                          size: 72,
-                          letter: account.nickname.isEmpty
-                              ? '?'
-                              : account.nickname.characters.first,
-                        ),
-                      ),
-              ),
-              const SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const SizedBox(height: 4),
-                    Text(
-                      account?.nickname ?? '微信用户',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                        color: WxColors.textPrimary,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Expanded(
-                          child: Text(
-                            '微信号：${account?.wxid ?? '-'}',
+          final nickname = account?.nickname ?? '微信用户';
+          final wxid = account?.wxid ?? '-';
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  // 头像：方形 + 4px 圆角
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(WxRadius.md),
+                    child: account == null
+                        ? const _AvatarFallback(size: 64, letter: '微')
+                        : Image.asset(
+                            account.avatar,
+                            width: 64,
+                            height: 64,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, _, _) => _AvatarFallback(
+                              size: 64,
+                              letter: nickname.isEmpty
+                                  ? '?'
+                                  : nickname.characters.first,
+                            ),
+                          ),
+                  ),
+                  const SizedBox(width: 20),
+                  // 右侧信息列
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          // 昵称：20sp 黑色中等粗
+                          Text(
+                            nickname,
                             style: const TextStyle(
-                              fontSize: 15,
-                              color: WxColors.textSecondary,
+                              fontSize: 20,
+                              fontWeight: WxFontWeight.medium,
+                              color: WxColors.textPrimary,
+                              height: 1.2,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                        SvgPicture.asset(
-                          'assets/icons/qrcode-outlined.svg',
-                          width: 20,
-                          height: 20,
-                          colorFilter: const ColorFilter.mode(
-                            WxColors.textSecondary,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        SvgPicture.asset(
-                          'assets/icons/weui-arrow.svg',
-                          width: 12,
-                          colorFilter: const ColorFilter.mode(
-                            WxColors.textHint,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: WxColors.divider, width: 0.5),
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: const Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.add,
-                                size: 12,
-                                color: WxColors.textSecondary,
-                              ),
-                              SizedBox(width: 2),
-                              Text(
-                                '状态',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: WxColors.textSecondary,
+                          const SizedBox(height: 8),
+                          // 微信号 + 箭头
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  '微信号：$wxid',
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: WxColors.textSecondary,
+                                    height: 1.2,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
+                              ),
+                              const SizedBox(width: 12),
+                              SvgPicture.asset(
+                                'assets/icons/weui-arrow.svg',
+                                width: 12,
+                                theme: const SvgTheme(currentColor: WxColors.textHint),
                               ),
                             ],
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Container(
-                          width: 26,
-                          height: 26,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: WxColors.divider, width: 0.5),
+                          const SizedBox(height: 16),
+                          // "+ 状态" 圆角按钮 + 刷新按钮
+                          Row(
+                            children: <Widget>[
+                              _StatusButton(),
+                              const SizedBox(width: 12),
+                              _EmptyCircleButton(),
+                            ],
                           ),
-                          alignment: Alignment.center,
-                          child: const Icon(
-                            Icons.more_horiz,
-                            size: 14,
-                            color: WxColors.textSecondary,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
+                ],
+              ),
+              // 二维码图标：独立定位在头部右上角
+              Positioned(
+                top: 4,
+                right: 0,
+                child: SvgPicture.asset(
+                  'assets/icons/qrcode-outlined.svg',
+                  width: 20,
+                  height: 20,
+                  theme: const SvgTheme(currentColor: WxColors.textSecondary),
                 ),
               ),
             ],
@@ -259,46 +252,111 @@ class _ProfileHeader extends StatelessWidget {
   }
 }
 
+// "+ 状态" 圆角描边按钮
+class _StatusButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        border: Border.all(color: WxColors.divider, width: 0.5),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Icon(
+            Icons.add,
+            size: 13,
+            color: WxColors.textSecondary,
+          ),
+          SizedBox(width: 2),
+          Text(
+            '状态',
+            style: TextStyle(
+              fontSize: 13,
+              color: WxColors.textSecondary,
+              height: 1.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// 刷新按钮（真版：带旋转箭头的圆形按钮）
+class _EmptyCircleButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 28,
+      height: 28,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: WxColors.divider, width: 0.5),
+      ),
+      child: const Icon(
+        Icons.refresh,
+        size: 18,
+        color: WxColors.textSecondary,
+      ),
+    );
+  }
+}
+
 // =====================================================================
-// 通用列表项
+// 通用列表项（白底 / 56dp 高 / 28dp 图标 / 16dp 间距）
 // =====================================================================
 
 class _ListItem extends StatelessWidget {
   final String icon;
   final Color? iconColor;
   final String label;
+  final String? trailingText; // 右侧副文本（灰色）
+  final bool showRedDot;     // 副文本右侧的小红点
   final VoidCallback? onTap;
-  final bool showArrow;
-  final Widget? trailingWidget;
 
   const _ListItem({
     required this.icon,
-    this.iconColor,
+    required this.iconColor,
     required this.label,
+    this.trailingText,
+    this.showRedDot = false,
     this.onTap,
-    this.showArrow = false,
-    this.trailingWidget,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: WxColors.card,
       child: InkWell(
         onTap: onTap,
         child: SizedBox(
-          height: 56,
+          height: 52,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               children: <Widget>[
-                SvgPicture.asset(
-                  icon,
-                  width: 28,
-                  height: 28,
-                  colorFilter: iconColor != null
-                      ? ColorFilter.mode(iconColor!, BlendMode.srcIn)
-                      : null,
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: icon.toLowerCase().endsWith('.png')
+                      ? Image.asset(
+                          icon,
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.contain,
+                        )
+                      : SvgPicture.asset(
+                          icon,
+                          width: 24,
+                          height: 24,
+                          theme: iconColor != null
+                              ? SvgTheme(currentColor: iconColor!)
+                              : null,
+                          fit: BoxFit.contain,
+                        ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
@@ -310,17 +368,32 @@ class _ListItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (trailingWidget != null) trailingWidget!,
-                if (trailingWidget != null && showArrow) const SizedBox(width: 8),
-                if (showArrow)
-                  SvgPicture.asset(
-                    'assets/icons/weui-arrow.svg',
-                    width: 12,
-                    colorFilter: const ColorFilter.mode(
-                      WxColors.textHint,
-                      BlendMode.srcIn,
+                if (trailingText != null) ...<Widget>[
+                  Text(
+                    trailingText!,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: WxColors.textSecondary,
                     ),
                   ),
+                  const SizedBox(width: 6),
+                ],
+                if (showRedDot) ...<Widget>[
+                  Container(
+                    width: 8,
+                    height: 8,
+                    decoration: const BoxDecoration(
+                      color: WxColors.unread,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                ],
+                SvgPicture.asset(
+                  'assets/icons/weui-arrow.svg',
+                  width: 12,
+                  theme: const SvgTheme(currentColor: WxColors.textHint),
+                ),
               ],
             ),
           ),
@@ -330,12 +403,13 @@ class _ListItem extends StatelessWidget {
   }
 }
 
+// 同组内细分隔线（缩进 64dp）
 class _ListDivider extends StatelessWidget {
   const _ListDivider();
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: WxColors.card,
       padding: const EdgeInsets.only(left: 64),
       child: Container(
         height: 0.5,
@@ -345,6 +419,7 @@ class _ListDivider extends StatelessWidget {
   }
 }
 
+// 头像占位（图片加载失败时显示）
 class _AvatarFallback extends StatelessWidget {
   final double size;
   final String letter;

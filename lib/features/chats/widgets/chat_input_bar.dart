@@ -10,6 +10,7 @@
 // 表情和 "+" 面板互斥切换；再次点同一个按钮收起面板回到"全无"状态。
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/theme/design_tokens.dart';
 import 'emoji_panel.dart';
@@ -118,20 +119,21 @@ class ChatInputBarState extends State<ChatInputBar> {
                 vertical: WxSpace.sm,
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.keyboard_voice_outlined,
-                      color: WxColors.textPrimary,
-                    ),
-                    onPressed: _voicePressed,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(
-                      minWidth: 36,
-                      minHeight: 36,
+                  GestureDetector(
+                    onTap: _voicePressed,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: SvgPicture.asset(
+                        'assets/icons/voice-outlined.svg',
+                        width: 26,
+                        height: 26,
+                        theme: const SvgTheme(currentColor: WxColors.textPrimary),
+                      ),
                     ),
                   ),
+                  const SizedBox(width: WxSpace.xs),
                   Expanded(
                     child: Container(
                       constraints: const BoxConstraints(
@@ -159,40 +161,54 @@ class ChatInputBarState extends State<ChatInputBar> {
                             horizontal: WxSpace.sm,
                             vertical: 8,
                           ),
-                          hintText: '',
+                          hintText: '轻触说话转文字 ->',
+                          hintStyle: TextStyle(
+                            color: WxColors.textHint,
+                            fontSize: 15,
+                          ),
                           isDense: true,
+                          suffixIcon: Icon(
+                            Icons.mic_none,
+                            color: WxColors.textSecondary,
+                            size: 20,
+                          ),
+                          suffixIconConstraints: BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(width: WxSpace.xs),
-                  IconButton(
-                    icon: Icon(
-                      _panelState == InputPanelState.emoji
-                          ? Icons.keyboard
-                          : Icons.emoji_emotions_outlined,
-                      color: WxColors.textPrimary,
-                    ),
-                    onPressed: toggleEmoji,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(
-                      minWidth: 36,
-                      minHeight: 36,
+                  GestureDetector(
+                    onTap: toggleEmoji,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: _panelState == InputPanelState.emoji
+                          ? const Icon(Icons.keyboard, color: WxColors.textPrimary, size: 28)
+                          : SvgPicture.asset(
+                              'assets/icons/sticker-outlined.svg',
+                              width: 26,
+                              height: 26,
+                              theme: const SvgTheme(currentColor: WxColors.textPrimary),
+                            ),
                     ),
                   ),
+                  const SizedBox(width: WxSpace.xs),
                   if (widget.controller.text.isEmpty)
-                    IconButton(
-                      icon: Icon(
-                        _panelState == InputPanelState.plus
-                            ? Icons.keyboard
-                            : Icons.add_circle_outline,
-                        color: WxColors.textPrimary,
-                      ),
-                      onPressed: togglePlus,
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(
-                        minWidth: 36,
-                        minHeight: 36,
+                    GestureDetector(
+                      onTap: togglePlus,
+                      child: Padding(
+                        padding: const EdgeInsets.all(6.0),
+                        child: _panelState == InputPanelState.plus
+                            ? const Icon(Icons.keyboard, color: WxColors.textPrimary, size: 28)
+                            : SvgPicture.asset(
+                                'assets/icons/plus-circle.svg',
+                                width: 26,
+                                height: 26,
+                                theme: const SvgTheme(currentColor: WxColors.textPrimary),
+                              ),
                       ),
                     )
                   else

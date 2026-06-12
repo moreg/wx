@@ -68,18 +68,7 @@ class WalletPage extends StatelessWidget {
                 _WalletListGroup(
                   children: [
                     _WalletListItem(
-                      icon: Icons.bubble_chart,
-                      iconColor: Color(0xFF07C160),
-                      label: '分付',
-                      trailingText: '可用¥1.14',
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8),
-                _WalletListGroup(
-                  children: [
-                    _WalletListItem(
-                      icon: Icons.verified_outlined,
+                      imageAsset: 'assets/icons/zhifufen.png',
                       iconColor: Color(0xFF07C160),
                       label: '支付分',
                     ),
@@ -142,6 +131,7 @@ class _WalletListGroup extends StatelessWidget {
 class _WalletListItem extends StatelessWidget {
   final IconData? icon;
   final String? svgAsset;
+  final String? imageAsset;
   final Color iconColor;
   final String label;
   final String? subtitle;
@@ -150,11 +140,12 @@ class _WalletListItem extends StatelessWidget {
   const _WalletListItem({
     this.icon,
     this.svgAsset,
+    this.imageAsset,
     required this.iconColor,
     required this.label,
     this.subtitle,
     this.trailingText,
-  }) : assert(icon != null || svgAsset != null);
+  }) : assert(icon != null || svgAsset != null || imageAsset != null);
 
   @override
   Widget build(BuildContext context) {
@@ -166,12 +157,18 @@ class _WalletListItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             children: <Widget>[
-              if (svgAsset != null)
+              if (imageAsset != null)
+                Image.asset(
+                  imageAsset!,
+                  width: 28,
+                  height: 28,
+                )
+              else if (svgAsset != null)
                 SvgPicture.asset(
                   svgAsset!,
                   width: 28,
                   height: 28,
-                  colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+                  theme: SvgTheme(currentColor: iconColor),
                 )
               else if (icon != null)
                 Icon(icon, color: iconColor, size: 28),

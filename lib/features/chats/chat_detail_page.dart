@@ -143,13 +143,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       elevation: 0.5,
       leading: IconButton(
         icon: SvgPicture.asset(
-          'assets/icons/weui-back.svg',
+          'assets/icons/weui-back-arrow.svg',
           width: 20,
           height: 20,
-          colorFilter: const ColorFilter.mode(
-            WxColors.textPrimary,
-            BlendMode.srcIn,
-          ),
+          theme: const SvgTheme(currentColor: WxColors.textPrimary),
         ),
         onPressed: () {
           if (context.canPop()) {
@@ -159,58 +156,33 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
           }
         },
       ),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            _chat?.name ?? '聊天',
-            style: const TextStyle(
-              fontSize: WxFontSize.title,
-              fontWeight: WxFontWeight.medium,
-              color: WxColors.textPrimary,
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          if (_chat != null)
-            Text(
-              _statusLineFor(_chat!),
-              style: const TextStyle(
-                fontSize: WxFontSize.caption,
-                color: WxColors.textSecondary,
-                fontWeight: WxFontWeight.regular,
-              ),
-            ),
-        ],
+      title: Text(
+        _chat?.name ?? '聊天',
+        style: const TextStyle(
+          fontSize: WxFontSize.title,
+          fontWeight: WxFontWeight.medium,
+          color: WxColors.textPrimary,
+        ),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
       centerTitle: true,
       actions: [
         IconButton(
-          icon: const Icon(Icons.chat_bubble_outline, size: 22),
-          onPressed: () => _toast('发起聊天 (Mock)'),
-        ),
-        IconButton(
-          icon: const Icon(Icons.more_horiz),
+          icon: SvgPicture.asset(
+            'assets/icons/more-filled.svg',
+            width: 24,
+            height: 24,
+            theme: const SvgTheme(currentColor: WxColors.textPrimary),
+          ),
           onPressed: () => _showChatOptions(),
         ),
+        const SizedBox(width: 8),
       ],
     );
   }
 
-  String _statusLineFor(Chat c) {
-    switch (c.type) {
-      case ChatType.group:
-        return c.description ?? '群聊';
-      case ChatType.official:
-      case ChatType.service:
-        return c.description ?? '公众号';
-      case ChatType.tool:
-        return c.description ?? '工具';
-      case ChatType.single:
-        return '在线';
-    }
-  }
+
 
   Widget _buildMessageList() {
     return GestureDetector(

@@ -1,253 +1,259 @@
 // 发现 Tab — 完整静态 UI
 //
-// 1:1 复刻微信 iOS 发现页：3 列宫格，包含朋友圈 / 视频号 / 直播 /
-// 扫一扫 / 摇一摇 / 看一看 / 搜一搜 / 附近 / 购物 共 9 项。
-//
-// 宫格背景：白色卡片圆角块；图标用 32dp 主题色，文字 12sp 二级色。
-// 项之间用 0.5px 分割线分组，项内部用 0.5px 分割线分格。
+// 1:1 复刻微信 iOS 发现页：传统分组列表布局。
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/theme/design_tokens.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({super.key});
 
-  static const List<_DiscoverItem> _items = <_DiscoverItem>[
-    _DiscoverItem(
-      icon: Icons.camera_alt_outlined,
-      label: '朋友圈',
-      color: Color(0xFF07C160),
-      badge: 'New',
-    ),
-    _DiscoverItem(
-      icon: Icons.play_circle_outline,
-      label: '视频号',
-      color: Color(0xFFFA9D3B),
-    ),
-    _DiscoverItem(
-      icon: Icons.live_tv_outlined,
-      label: '直播',
-      color: Color(0xFFE64340),
-    ),
-    _DiscoverItem(
-      icon: Icons.qr_code_scanner,
-      label: '扫一扫',
-      color: Color(0xFF576B95),
-    ),
-    _DiscoverItem(
-      icon: Icons.vibration,
-      label: '摇一摇',
-      color: Color(0xFFFA9D3B),
-    ),
-    _DiscoverItem(
-      icon: Icons.travel_explore_outlined,
-      label: '看一看',
-      color: Color(0xFF576B95),
-    ),
-    _DiscoverItem(
-      icon: Icons.search,
-      label: '搜一搜',
-      color: Color(0xFFE64340),
-    ),
-    _DiscoverItem(
-      icon: Icons.location_on_outlined,
-      label: '附近',
-      color: Color(0xFF07C160),
-    ),
-    _DiscoverItem(
-      icon: Icons.shopping_bag_outlined,
-      label: '购物',
-      color: Color(0xFFFA9D3B),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: WxColors.bg,
-      appBar: AppBar(title: const Text('发现'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('发现'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/icons/weui-search.svg',
+              width: 24,
+              height: 24,
+              theme: const SvgTheme(currentColor: Colors.black),
+            ),
+            onPressed: () => _showToast(context, '搜索'),
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/icons/add2-outlined.svg',
+              width: 24,
+              height: 24,
+              theme: const SvgTheme(currentColor: Colors.black),
+            ),
+            onPressed: () => _showToast(context, '添加'),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: ListView(
+        padding: EdgeInsets.zero,
         children: <Widget>[
           const SizedBox(height: WxSpace.sm),
-          _DiscoverGrid(items: _items),
+          // 组 1：朋友圈
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/moment.svg',
+                label: '朋友圈',
+                useOriginalColor: true,
+                onTap: () => _showToast(context, '朋友圈'),
+              ),
+            ],
+          ),
           const SizedBox(height: WxSpace.sm),
-          // 朋友圈入口（朋友圈是一级类目，有时间线 + 封面图块）
-          _MomentsEntry(),
+          // 组 2：视频号
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/channels-outlined.svg',
+                label: '视频号',
+                color: const Color(0xFFFA9D3B),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 180),
+                      child: const Text(
+                        '今日金价，今天是2026年\n6月12号的下午18:00',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: WxColors.textSecondary,
+                          height: 1.25,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      width: 8,
+                      height: 8,
+                      decoration: const BoxDecoration(
+                        color: WxColors.unread,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ],
+                ),
+                onTap: () => _showToast(context, '视频号'),
+              ),
+            ],
+          ),
+          const SizedBox(height: WxSpace.sm),
+          // 组 3：扫一扫、听一听
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/scan-outlined.svg',
+                label: '扫一扫',
+                color: const Color(0xFF10AEFF),
+                showDivider: true,
+                onTap: () => _showToast(context, '扫一扫'),
+              ),
+              _DiscoverRow(
+                iconPath: 'assets/icons/voice-outlined.svg',
+                label: '听一听',
+                color: const Color(0xFFFA5151),
+                onTap: () => _showToast(context, '听一听'),
+              ),
+            ],
+          ),
+          const SizedBox(height: WxSpace.sm),
+          // 组 4：看一看、搜一搜
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/look-outlined.svg',
+                label: '看一看',
+                color: const Color(0xFFFA9D3B),
+                showDivider: true,
+                onTap: () => _showToast(context, '看一看'),
+              ),
+              _DiscoverRow(
+                iconPath: 'assets/icons/search-outlined.svg',
+                label: '搜一搜',
+                color: const Color(0xFFE64340),
+                onTap: () => _showToast(context, '搜一搜'),
+              ),
+            ],
+          ),
+          const SizedBox(height: WxSpace.sm),
+          // 组 5：附近的人
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/nearby-outlined.svg',
+                label: '附近的人',
+                color: const Color(0xFF576B95),
+                onTap: () => _showToast(context, '附近的人'),
+              ),
+            ],
+          ),
+          const SizedBox(height: WxSpace.sm),
+          // 组 6：小程序
+          _DiscoverGroup(
+            children: <Widget>[
+              _DiscoverRow(
+                iconPath: 'assets/icons/mini-program-2-outlined.svg',
+                label: '小程序',
+                color: const Color(0xFF7B57FF),
+                onTap: () => _showToast(context, '小程序'),
+              ),
+            ],
+          ),
+          const SizedBox(height: WxSpace.xl),
         ],
       ),
     );
   }
 }
 
-class _DiscoverItem {
-  final IconData icon;
-  final String label;
-  final Color color;
-  final String? badge;
-  const _DiscoverItem({
-    required this.icon,
-    required this.label,
-    required this.color,
-    this.badge,
-  });
-}
-
-/// 3 列宫格：9 个 item 排成 3 行，每行 3 个。
-class _DiscoverGrid extends StatelessWidget {
-  final List<_DiscoverItem> items;
-  const _DiscoverGrid({required this.items});
+class _DiscoverGroup extends StatelessWidget {
+  final List<Widget> children;
+  const _DiscoverGroup({required this.children});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: WxColors.card,
-      padding: const EdgeInsets.symmetric(vertical: WxSpace.sm),
+      decoration: const BoxDecoration(
+        color: WxColors.card,
+        border: Border(
+          top: BorderSide(color: WxColors.divider, width: 0.5),
+          bottom: BorderSide(color: WxColors.divider, width: 0.5),
+        ),
+      ),
       child: Column(
-        children: <Widget>[
-          for (int row = 0; row < items.length / 3; row++)
-            IntrinsicHeight(
-              child: Row(
-                children: <Widget>[
-                  for (int col = 0; col < 3; col++) ...<Widget>[
-                    Expanded(
-                      child: _DiscoverCell(item: items[row * 3 + col]),
-                    ),
-                    if (col < 2)
-                      const VerticalDivider(
-                        width: 0.5,
-                        thickness: 0.5,
-                        color: WxColors.divider,
-                      ),
-                  ],
-                ],
-              ),
-            ),
-        ],
+        children: children,
       ),
     );
   }
 }
 
-class _DiscoverCell extends StatelessWidget {
-  final _DiscoverItem item;
-  const _DiscoverCell({required this.item});
+class _DiscoverRow extends StatelessWidget {
+  final String iconPath;
+  final String label;
+  final Color color;
+  final bool useOriginalColor;
+  final Widget? trailing;
+  final bool showDivider;
+  final VoidCallback onTap;
+
+  const _DiscoverRow({
+    required this.iconPath,
+    required this.label,
+    this.color = const Color(0xFF888888),
+    this.useOriginalColor = false,
+    this.trailing,
+    this.showDivider = false,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _showToast(context, item.label),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: WxSpace.md),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Stack(
-              clipBehavior: Clip.none,
-              children: <Widget>[
-                Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    color: item.color.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(WxRadius.md),
-                  ),
-                  alignment: Alignment.center,
-                  child: Icon(item.icon, color: item.color, size: 24),
-                ),
-                if (item.badge != null)
-                  Positioned(
-                    top: -4,
-                    right: -6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                        vertical: 1,
-                      ),
-                      decoration: BoxDecoration(
-                        color: WxColors.unread,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        item.badge!,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 9,
-                          fontWeight: WxFontWeight.medium,
-                        ),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const SizedBox(height: WxSpace.xs),
-            Text(
-              item.label,
-              style: const TextStyle(
-                fontSize: WxFontSize.small,
-                color: WxColors.textPrimary,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// 朋友圈入口卡片：头像 + 昵称 + 一句提示文字
-class _MomentsEntry extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: WxColors.card,
-      padding: const EdgeInsets.symmetric(
-        horizontal: WxSpace.lg,
-        vertical: WxSpace.md,
-      ),
-      child: Row(
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: const Color(0xFF07C160).withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(WxRadius.sm),
-            ),
-            alignment: Alignment.center,
-            child: const Icon(
-              Icons.camera_alt_outlined,
-              color: Color(0xFF07C160),
-              size: 22,
-            ),
-          ),
-          const SizedBox(width: WxSpace.md),
-          const Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            constraints: const BoxConstraints(minHeight: 56.0),
+            padding: const EdgeInsets.symmetric(horizontal: WxSpace.lg),
+            child: Row(
               children: <Widget>[
+                SvgPicture.asset(
+                  iconPath,
+                  width: 24,
+                  height: 24,
+                  theme: useOriginalColor
+                      ? null
+                      : SvgTheme(currentColor: color),
+                ),
+                const SizedBox(width: WxSpace.md),
                 Text(
-                  '朋友圈',
-                  style: TextStyle(
-                    fontSize: WxFontSize.bodyLarge,
+                  label,
+                  style: const TextStyle(
+                    fontSize: WxFontSize.title,
                     color: WxColors.textPrimary,
+                    fontWeight: WxFontWeight.regular,
                   ),
                 ),
-                SizedBox(height: 2),
-                Text(
-                  '三张昨天拍的照片等你翻牌',
-                  style: TextStyle(
-                    fontSize: WxFontSize.small,
-                    color: WxColors.textSecondary,
-                  ),
+                const Spacer(),
+                if (trailing != null) ...<Widget>[
+                  trailing!,
+                  const SizedBox(width: WxSpace.sm),
+                ],
+                const Icon(
+                  Icons.chevron_right,
+                  color: WxColors.textHint,
+                  size: 20,
                 ),
               ],
             ),
           ),
-          const Icon(
-            Icons.chevron_right,
-            color: WxColors.textHint,
-            size: 18,
-          ),
+          if (showDivider)
+            const Padding(
+              padding: EdgeInsets.only(left: 52.0),
+              child: Divider(
+                height: 0.5,
+                thickness: 0.5,
+                color: WxColors.divider,
+              ),
+            ),
         ],
       ),
     );

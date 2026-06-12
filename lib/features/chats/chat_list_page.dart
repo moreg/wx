@@ -188,13 +188,10 @@ class _ChatListPageState extends State<ChatListPage> {
         actions: [
           IconButton(
             icon: SvgPicture.asset(
-              'assets/icons/search-outlined.svg',
+              'assets/icons/weui-search.svg',
               width: 24,
               height: 24,
-              colorFilter: const ColorFilter.mode(
-                Colors.black,
-                BlendMode.srcIn,
-              ),
+              theme: const SvgTheme(currentColor: Colors.black),
             ),
             onPressed: () {
               _showSnack('搜索 (Mock)');
@@ -202,13 +199,10 @@ class _ChatListPageState extends State<ChatListPage> {
           ),
           IconButton(
             icon: SvgPicture.asset(
-              'assets/icons/plus-circle.svg',
+              'assets/icons/add2-outlined.svg',
               width: 24,
               height: 24,
-              colorFilter: const ColorFilter.mode(
-                Colors.black,
-                BlendMode.srcIn,
-              ),
+              theme: const SvgTheme(currentColor: Colors.black),
             ),
             onPressed: _showTopMenu,
           ),
@@ -235,12 +229,9 @@ class _ChatListPageState extends State<ChatListPage> {
                       physics: const AlwaysScrollableScrollPhysics(
                         parent: BouncingScrollPhysics(),
                       ),
-                      itemCount: _items.length + 1,
+                      itemCount: _items.length,
                       itemBuilder: (ctx, i) {
-                        if (i == 0) {
-                          return const _DeviceLoginBanner();
-                        }
-                        final item = _items[i - 1];
+                        final item = _items[i];
                         return _ChatListRow(
                           key: ValueKey(item.id),
                           item: item,
@@ -316,44 +307,6 @@ class _TopMenuItem extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _DeviceLoginBanner extends StatelessWidget {
-  const _DeviceLoginBanner();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 44,
-      color: WxColors.card,
-      child: InkWell(
-        onTap: () {},
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: WxSpace.lg),
-          child: Row(
-            children: [
-              Icon(
-                Icons.desktop_windows_outlined,
-                size: 20,
-                color: WxColors.linkBlue,
-              ),
-              SizedBox(width: WxSpace.md),
-              Expanded(
-                child: Text(
-                  'Windows 微信已登录',
-                  style: TextStyle(
-                    color: WxColors.linkBlue,
-                    fontSize: WxFontSize.body,
-                  ),
-                ),
-              ),
-              Icon(Icons.chevron_right, size: 18, color: WxColors.textTertiary),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
